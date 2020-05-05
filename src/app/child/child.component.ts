@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {HttpService} from '../services/http.service';
 import {AdminReport} from '../interfaces/adminReport';
+import {StudentReport } from '../interfaces/studentReport';
+
 
 
 @Component({
@@ -11,10 +13,12 @@ import {AdminReport} from '../interfaces/adminReport';
 export class ChildComponent implements OnInit {
 
   report: AdminReport[];
+  studentReport: StudentReport[];
   constructor(private httpPosts: HttpService) { }
 
   ngOnInit(): void {
     this.getReport();
+    this.getStudentReport();
   }
 
   getReport() {
@@ -24,5 +28,14 @@ export class ChildComponent implements OnInit {
     });
 
   }
+
+  getStudentReport() {
+    this.httpPosts.getStudentReport().subscribe(studentReportDTORecords => {
+      this.studentReport = studentReportDTORecords;
+      console.log(this.report);
+    });
+
+  }
+
 
 }

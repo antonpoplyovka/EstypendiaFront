@@ -6,11 +6,15 @@
     <th>Imię</th>
     <th>Nazwisko</th>
     <th>Kwota stypendium</th>
+    <th>Miesięczna Kwota</th>
+    <th>Data stypendium</th>
   </tr>
   </thead>
   <tr *ngFor="let record of report">
     <td>{{record.name}}</td>
     <td>{{record.surname}}</td>
     <td>{{record.monthlyPayment}}</td>
+    <td>{{record.paymentAmount}</td>
+    <td>{{record.paymentDate}}</td>
   </tr>
 </table>
