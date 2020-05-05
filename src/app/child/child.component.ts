@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from '../services/http.service';
+import {AdminReport} from '../interfaces/adminReport';
+
 
 @Component({
   selector: 'app-child',
@@ -8,17 +10,17 @@ import {HttpService} from '../services/http.service';
 })
 export class ChildComponent implements OnInit {
 
-  posts = [];
+  report: AdminReport[];
   constructor(private httpPosts: HttpService) { }
 
   ngOnInit(): void {
-    this.getPosts();
+    this.getReport();
   }
 
-  getPosts() {
-    this.httpPosts.getPosts().subscribe(categories => {
-      this.posts = categories;
-      console.log(this.posts);
+  getReport() {
+    this.httpPosts.getReport().subscribe(adminReportDTORecords => {
+      this.report = adminReportDTORecords;
+      console.log(this.report);
     });
 
   }
