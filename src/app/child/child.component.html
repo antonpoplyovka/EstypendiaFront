@@ -6,13 +6,60 @@
     <th>Imię</th>
     <th>Nazwisko</th>
     <th>Kwota stypendium</th>
-  
+
   </tr>
   </thead>
   <tr *ngFor="let record of report">
     <td>{{record.name}}</td>
     <td>{{record.surname}}</td>
     <td>{{record.monthlyPayment}}</td>
-    
+  </tr>
+</table>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th>Imie</th>
+    <th>Nazwisko</th>
+    <th>Imię ojca</th>
+    <th>Miejsce urodzenia</th>
+    <th>Kraj urodzenia</th>
+    <th>Obywatelstwo</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let record of studentsReport">
+    <td>{{record.name}}</td>
+    <td>{{record.surname}}</td>
+    <td>{{record.fatherName}}</td>
+    <td>{{record.placeOfBirth}}</td>
+    <td>{{record.countryOfBirth}}</td>
+    <td>{{record.nationalityOfBirth}}</td>
+  </tr>
+</table>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th>Kod pocztowy</th>
+    <th>Kraj</th>
+    <th>Miasto</th>
+    <th>Ulica</th>
+    <th>Nr domu</th>
+    <th>Nr mieszkania</th>
+    <th>Numer telefonu</th>
+
+
+  </tr>
+  </thead>
+  <tr *ngFor="let record of addressReport">
+    <td>{{record.code}}</td>
+    <td>{{record.country}}</td>
+    <td>{{record.city}}</td>
+    <td>{{record.street}}</td>
+    <td>{{record.houseNumber}}</td>
+    <td>{{record.flatNumber}}</td>
+    <td>{{record.phone}}</td>
+
+
   </tr>
 </table>
