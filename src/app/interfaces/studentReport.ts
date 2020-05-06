@@ -1,4 +1,4 @@
 export interface StudentReport {
     paymentAmount?: number;
-    paymentDate?: number;
+    paymentDate?: Date;
 }
