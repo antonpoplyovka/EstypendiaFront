@@ -18,13 +18,13 @@ export class HttpService {
   }
 
   public getStudentReport(): Observable<Array<StudentReport>> {
-    return this.http.get<Array<StudentReport>>('http://localhost:8081/api/v1/studentReport/student');
+    return this.http.get<Array<StudentReport>>('http://localhost:8081/api/v1/report/student');
   }
 
   public getStudentsReport(): Observable<Array<Students>> {
-    return this.http.get<Array<Students>>('http://localhost:8081/api/v1/studentsReport/students');
+    return this.http.get<Array<Students>>('http://localhost:8081/api/v1/students/');
   }
   public getAddressReport(): Observable<Array<Address>> {
-    return this.http.get<Array<Address>>('http://localhost:8081/api/v1/addressReport/address');
+    return this.http.get<Array<Address>>('http://localhost:8081/api/v1/address/');
   }
 }
