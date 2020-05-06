@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {AdminReport} from '../interfaces/adminReport';
 import {StudentReport} from '../interfaces/studentReport';
+import {Students} from '../interfaces/students';
+import {Address} from '../interfaces/address';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,13 @@ export class HttpService {
   }
 
   public getStudentReport(): Observable<Array<StudentReport>> {
-    return this.http.get<Array<StudentReport>>('http://localhost:8081/api/v1/report/student');
+    return this.http.get<Array<StudentReport>>('http://localhost:8081/api/v1/studentReport/student');
   }
 
+  public getStudentsReport(): Observable<Array<Students>> {
+    return this.http.get<Array<Students>>('http://localhost:8081/api/v1/studentsReport/students');
+  }
+  public getAddressReport(): Observable<Array<Address>> {
+    return this.http.get<Array<Address>>('http://localhost:8081/api/v1/addressReport/address');
+  }
 }
