@@ -4,7 +4,9 @@ import {AdminReport} from '../interfaces/adminReport';
 import {StudentReport } from '../interfaces/studentReport';
 import {Students} from '../interfaces/students';
 import {Address} from '../interfaces/address';
-
+import {PaymentsLog} from '../interfaces/paymentsLog';
+import {TypeOfHousing} from '../interfaces/typeOfHousing';
+import {TypeOfStudent} from '../interfaces/typeOfStudent';
 
 
 @Component({
@@ -18,6 +20,9 @@ export class ChildComponent implements OnInit {
   studentReport: StudentReport[];
   studentsReport: Students[];
   addressReport: Address[];
+  paymentsLogReport: PaymentsLog[];
+  typeOfHousingReport: TypeOfHousing[];
+  typeOfStudentReport: TypeOfStudent[];
 
   constructor(private httpPosts: HttpService) { }
 
@@ -26,6 +31,9 @@ export class ChildComponent implements OnInit {
     this.getStudentReport();
     this.getStudentsReport();
     this.getAddressReport();
+    this.getPaymentsLogReport();
+    this.getTypeOfHousingReport();
+    this.getTypeOfStudentReport();
   }
 
   getReport() {
@@ -55,6 +63,27 @@ export class ChildComponent implements OnInit {
     this.httpPosts.getAddressReport().subscribe(addressController => {
       this.addressReport = addressController;
       console.log(this.addressReport);
+    });
+  }
+
+  getPaymentsLogReport(){
+    this.httpPosts.getPaymentsLogReport().subscribe(paymentsLogController => {
+      this.paymentsLogReport = paymentsLogController ;
+      console.log(this.paymentsLogReport );
+    });
+  }
+
+  getTypeOfHousingReport(){
+    this.httpPosts.getTypeOfHousingReport().subscribe(typeOfHousingController => {
+      this.typeOfHousingReport = typeOfHousingController ;
+      console.log(this.typeOfHousingReport );
+    });
+  }
+
+  getTypeOfStudentReport(){
+    this.httpPosts.getTypeOfStudentReport().subscribe(typeOfStudentController => {
+      this.typeOfStudentReport = typeOfStudentController ;
+      console.log(this.typeOfStudentReport );
     });
   }
 
