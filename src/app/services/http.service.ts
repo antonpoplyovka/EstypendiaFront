@@ -7,7 +7,6 @@ import {Students} from '../interfaces/students';
 import {Address} from '../interfaces/address';
 import {PaymentsLog} from '../interfaces/paymentsLog';
 import {TypeOfHousing} from '../interfaces/typeOfHousing';
-import {TypeOfStudent} from '../interfaces/typeOfStudent';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +39,4 @@ export class HttpService {
     return this.http.get<Array<TypeOfHousing>>('http://localhost:8081/api/v1/typeOfHousing/');
   }
 
-  public getTypeOfStudentReport(): Observable<Array<TypeOfStudent>> {
-    return this.http.get<Array<TypeOfStudent>>('http://localhost:8081/api/v1/typeOfStudent');
-  }
 }

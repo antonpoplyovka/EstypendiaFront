@@ -6,7 +6,6 @@ import {Students} from '../interfaces/students';
 import {Address} from '../interfaces/address';
 import {PaymentsLog} from '../interfaces/paymentsLog';
 import {TypeOfHousing} from '../interfaces/typeOfHousing';
-import {TypeOfStudent} from '../interfaces/typeOfStudent';
 
 
 @Component({
@@ -22,7 +21,6 @@ export class ChildComponent implements OnInit {
   addressReport: Address[];
   paymentsLogReport: PaymentsLog[];
   typeOfHousingReport: TypeOfHousing[];
-  typeOfStudentReport: TypeOfStudent[];
 
   constructor(private httpPosts: HttpService) { }
 
@@ -33,7 +31,6 @@ export class ChildComponent implements OnInit {
     this.getAddressReport();
     this.getPaymentsLogReport();
     this.getTypeOfHousingReport();
-    this.getTypeOfStudentReport();
   }
 
   getReport() {
@@ -77,13 +74,6 @@ export class ChildComponent implements OnInit {
     this.httpPosts.getTypeOfHousingReport().subscribe(typeOfHousingController => {
       this.typeOfHousingReport = typeOfHousingController ;
       console.log(this.typeOfHousingReport );
-    });
-  }
-
-  getTypeOfStudentReport(){
-    this.httpPosts.getTypeOfStudentReport().subscribe(typeOfStudentController => {
-      this.typeOfStudentReport = typeOfStudentController ;
-      console.log(this.typeOfStudentReport );
     });
   }
 
