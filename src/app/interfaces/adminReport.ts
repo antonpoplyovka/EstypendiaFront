@@ -3,3 +3,4 @@ export interface AdminReport {
   surname?: string;
   monthlyPayment?: number;
 }
+
