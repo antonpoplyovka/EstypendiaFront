@@ -1,0 +1,153 @@
+<!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal
+</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+        <form>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="nameInputField">Imię</label>
+                  <input type="text" class="form-control" id="nameInputField" placeholder="Imię">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+              <div class="col-sm">
+
+                <div class="form-group">
+                  <label for="surnameInputField">Nazwisko</label>
+                  <input type="text" class="form-control" id="surnameInputField" placeholder="Nazwisko">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+            </div>
+            <!--            =====================================================================================-->
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="fatherNameInputField">Imię ojca</label>
+                  <input type="text" class="form-control" id="fatherNameInputField" placeholder="Imię ojca">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="placeOfBirthInputField">Miejsce urodzenia</label>
+                  <input type="text" class="form-control" id="placeOfBirthInputField" placeholder="Miejsce urodzenia">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+            </div>
+            <!--            =====================================================================================-->
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="countryOfBirthInputField">Kraj urodzenia</label>
+                  <input type="text" class="form-control" id="countryOfBirthInputField" placeholder="Kraj urodzenia">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="nationalityInputField">Obywatelstwo</label>
+                  <input type="text" class="form-control" id="nationalityInputField" placeholder="Obywatelstwo">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+            </div>
+            <!--            =====================================================================================-->
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="nationalityOfBirthInputField">Obywatelstwo przy urodzeniu</label>
+                  <input type="text" class="form-control" id="nationalityOfBirthInputField"
+                         aria-describedby="nationalityOfBirthHelp" placeholder="Obywatelstwo">
+                  <small id="nationalityOfBirthHelp" class="form-text text-muted">Wypełnij, jeśli obywatelstwo przy
+                    urodzeniu
+                    różni się od obecnego</small>
+                </div>
+              </div>
+              <div class="col-sm">
+
+                <div class="form-group">
+                  <label for="addressOfResidenceInputField">Adres zameldowania</label>
+                  <input type="number" class="form-control" id="addressOfResidenceInputField"
+                         placeholder="Adres zameldowania">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+            </div>
+            <!--            =====================================================================================-->
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="actualAddressInputField">Adres zamieszkania</label>
+                  <input type="number" class="form-control" id="actualAddressInputField"
+                         placeholder="Adres zamieszkania">
+                </div>
+              </div>
+              <div class="col-sm">
+
+                <div class="form-group">
+                  <label for="addressTypeInputField">Typ zakwaterowania</label>
+                  <input type="number" class="form-control" id="addressTypeInputField" placeholder="Typ zakwaterowania">
+                </div>
+              </div>
+            </div>
+            <!--            =====================================================================================-->
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="typeOfStudentInputField">Typ studenta</label>
+                  <input type="number" class="form-control" id="typeOfStudentInputField" placeholder="Typ studenta">
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th>Imie</th>
+    <th>Nazwisko</th>
+    <th>Imię ojca</th>
+    <th>Miejsce urodzenia</th>
+    <th>Kraj urodzenia</th>
+    <th>Obywatelstwo</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let record of studentsList">
+    <td>{{record.name}}</td>
+    <td>{{record.surname}}</td>
+    <td>{{record.fatherName}}</td>
+    <td>{{record.placeOfBirth}}</td>
+    <td>{{record.countryOfBirth}}</td>
+    <td>{{record.nationalityOfBirth}}</td>
+  </tr>
+</table>
