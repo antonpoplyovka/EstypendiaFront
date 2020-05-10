@@ -1,30 +1,49 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {AdminReport} from '../interfaces/adminReport';
 import {StudentReport} from '../interfaces/studentReport';
-import {Students} from '../interfaces/students';
+import {Student} from '../interfaces/student';
 import {Address} from '../interfaces/address';
+import {environment} from '../../environments/environment';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  constructor(private http: HttpClient) {  }
+  constructor(private httpClient: HttpClient) {  }
 
   public getReport(): Observable<Array<AdminReport>> {
-    return this.http.get<Array<AdminReport>>('http://localhost:8081/api/v1/report/admin');
+    return this.httpClient.get<Array<AdminReport>>(environment.adminReportURL);
   }
 
   public getStudentReport(): Observable<Array<StudentReport>> {
-    return this.http.get<Array<StudentReport>>('http://localhost:8081/api/v1/report/student');
+    return this.httpClient.get<Array<StudentReport>>(environment.studentReportURL);
   }
 
-  public getStudentsReport(): Observable<Array<Students>> {
-    return this.http.get<Array<Students>>('http://localhost:8081/api/v1/students/');
+  public getStudentsList(): Observable<Array<Student>> {
+    return this.httpClient.get<Array<Student>>(environment.studentURL);
+  }
+
+  public createShift( student: Student): Observable<any> {
+    return this.httpClient
+      .post(environment.studentURL, student)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
   public getAddressReport(): Observable<Array<Address>> {
-    return this.http.get<Array<Address>>('http://localhost:8081/api/v1/address/');
+    return this.httpClient.get<Array<Address>>(environment.addressURL);
+  }
+  handleError(error) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      errorMessage = `${error.error[0].message}`;
+    }
+    return throwError(errorMessage);
   }
 }

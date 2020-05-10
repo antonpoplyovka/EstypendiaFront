@@ -1,4 +1,4 @@
-export interface Students {
+export interface Student {
     id?: number;
     name?: string;
     surname?: string;
@@ -7,4 +7,8 @@ export interface Students {
     countryOfBirth?: string;
     nationality?: string;
     nationalityOfBirth?: string;
+    addressOfResidence?: number;
+    actualAddress?: number;
+    addressType?: number;
+    typeOfStudent?: number;
 }
