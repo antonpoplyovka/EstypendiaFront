@@ -7,6 +7,7 @@ import {Student} from '../interfaces/student';
 import {Address} from '../interfaces/address';
 import {environment} from '../../environments/environment';
 import {catchError} from 'rxjs/operators';
+import {StudentType} from '../interfaces/student-type';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class HttpService {
     return this.httpClient.get<Array<Student>>(environment.studentURL);
   }
 
-  public createShift( student: Student): Observable<any> {
+  public createNewStudent( student: Student): Observable<any> {
     return this.httpClient
       .post(environment.studentURL, student)
       .pipe(
@@ -37,6 +38,12 @@ export class HttpService {
   public getAddressReport(): Observable<Array<Address>> {
     return this.httpClient.get<Array<Address>>(environment.addressURL);
   }
+  public getStudentTypes(): Observable<Array<StudentType>> {
+    return this.httpClient.get<Array<StudentType>>(environment.studentTypeURL);
+  }
+
+
+
   handleError(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
