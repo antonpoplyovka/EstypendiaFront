@@ -35,6 +35,15 @@ export class HttpService {
         catchError(this.handleError)
       );
   }
+
+  public createNewAddress(address: Address): Observable<any>{
+    return this.httpClient
+      .post(environment.addressURL, address)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   public getAddressReport(): Observable<Array<Address>> {
     return this.httpClient.get<Array<Address>>(environment.addressURL);
   }
