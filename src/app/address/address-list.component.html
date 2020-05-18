@@ -30,11 +30,10 @@
                 <div class="form-group">
                   <label for="studentIdInputField">Student Id</label>
                   <input type="number" class="form-control" id="studentIdInputField" name="studentIdInputField"
-                         placeholder="StudentId" [(ngModel)]="address.StudentId">
+                         placeholder="StudentId" [(ngModel)]="address.studentId">
                   <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                 </div>
               </div>
-           </div>
             <!--            =====================================================================================-->
             <div class="row">
               <div class="col-sm">
@@ -152,7 +151,7 @@
     <th>Numer telefonu</th>
   </tr>
   </thead>
-  <tr *ngFor="let record of addresssList">
+  <tr *ngFor="let record of addressList">
     <td>{{record.id}}</td>
     <td>{{record.studentId}}</td>
     <td>{{record.code}}</td>

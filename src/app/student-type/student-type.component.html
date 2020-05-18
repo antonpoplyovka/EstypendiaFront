@@ -22,7 +22,7 @@
                     <div class="form-group">
                         <label for="studentIdInputField">Student Id</label>
                         <input type="number" class="form-control" id="studentIdInputField" name="studentIdInputField"
-                               placeholder="StudentId" [(ngModel)]="studentTypeList.StudentId">
+                               placeholder="StudentId" [(ngModel)]="studentType.id">
                         <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                     </div>
               </div>
@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <label for="monthlyPaymentInputField">Miesięczna opłata</label>
                         <input type="number" class="form-control" id="monthlyPaymentInputField" name="monthlyPaymentInputField"
-                               placeholder="MonthlyPayment" [(ngModel)]="studentTypeList.monthlyPayment">
+                               placeholder="MonthlyPayment" [(ngModel)]="studentType.monthlyPayment">
                         <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                     </div>
               </div>
@@ -40,9 +40,8 @@
                 <div class="form-group">
                     <label for="descriptionInputField">Opis</label>
                     <input type="text" class="form-control" id="descriptionInputField" name="descriptionInputField"
-                           placeholder="Description" [(ngModel)]="studentTypeList.description">
+                           placeholder="Description" [(ngModel)]="studentType.description">
                     <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-                  </div>
                 </div>
               </div>
             </div>
@@ -70,8 +69,8 @@
     <th>Opis</th>
   </tr>
   </thead>
-  <tr *ngFor="let record of studentTypeList">
-    <td>{{record.studentId}}</td>
+  <tr *ngFor="let record of studentType">
+    <td>{{record.id}}</td>
     <td>{{record.monthlyPayment}}</td>
     <td>{{record.description}}</td>
   </tr>

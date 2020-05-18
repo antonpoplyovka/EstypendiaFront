@@ -8,12 +8,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { StudentsListComponent } from './students-list/students-list.component';
 import {FormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddressListComponent } from './address/address-list.component';
+import { StudentTypeComponent } from './student-type/student-type.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ChildComponent,
-    StudentsListComponent
+    StudentsListComponent,
+    AddressListComponent,
+    StudentTypeComponent,
   ],
     imports: [
         BrowserModule,

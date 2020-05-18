@@ -15,7 +15,7 @@ export class AddressListComponent implements OnInit {
 
   addressList: Address[];
   studentList: Student[];
-  address = new Address();
+  address = new Address( 0 , 0 , '' , '' , '' , '' , '' , '' , '', '', '');
   error: string;
   studentTypeList: StudentType[];
 
@@ -48,12 +48,13 @@ export class AddressListComponent implements OnInit {
         this.error = error;
       });
   }
-  addressEntityReadyToSend(){
-  return this.address.id.length !== 0 && this.address.studentId.length !== 0 && this.address.code.length > 0
-    && this.address.street.length > 0 && this.address.district.length > 0 && this.address.voivodeship.length > 0
-    && this.address.city.length > 0 && this.address.country > 0 && this.address.phone > 0
-    && this.address.houseNumber > 0 &&  this.address.flatNumber > 0;
-  }
+
+   addressEntityReadyToSend(){
+   return this.address.id !== 0 && this.address.studentId !== 0 && this.address.code.length > 0
+     && this.address.street.length > 0 && this.address.district.length > 0 && this.address.voivodeship.length > 0
+     && this.address.city.length > 0 && this.address.country.length > 0 && this.address.phone.length > 0
+     && this.address.houseNumber.length > 0 &&  this.address.flatNumber.length > 0;
+   }
 
   initEmptyAddress(){
 
@@ -63,7 +64,7 @@ export class AddressListComponent implements OnInit {
     this.address.street = '';
     this.address.district = '';
     this.address.voivodeship = '';
-    this.address.city = ' ';
+    this.address.city = '';
     this.address.country = '';
     this.address.phone = '';
     this.address.houseNumber = '';
