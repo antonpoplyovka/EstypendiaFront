@@ -15,7 +15,7 @@ export class AddressListComponent implements OnInit {
 
   addressList: Address[];
   studentList: Student[];
-  address = new Address( 0, 0, '', '', '', '', '', '', '', '', '');
+  address = new Address();
   error: string;
   studentTypeList: StudentType[];
 

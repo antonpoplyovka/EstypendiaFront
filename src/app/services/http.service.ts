@@ -44,6 +44,7 @@ export class HttpService {
       );
   }
 
+
   public getAddressReport(): Observable<Array<Address>> {
     return this.httpClient.get<Array<Address>>(environment.addressURL);
   }
@@ -51,6 +52,13 @@ export class HttpService {
     return this.httpClient.get<Array<StudentType>>(environment.studentTypeURL);
   }
 
+  public createNewStudentType(address: StudentType): Observable<any>{
+    return this.httpClient
+      .post(environment.addressURL, StudentType)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
 
   handleError(error) {
