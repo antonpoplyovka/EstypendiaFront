@@ -3,6 +3,8 @@ import {Student} from '../interfaces/student';
 import {HttpService} from '../services/http.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {StudentType} from '../interfaces/student-type';
+import {AddressType} from '../interfaces/address-type';
+import {Address} from '../interfaces/address';
 
 @Component({
   selector: 'app-students-list',
@@ -13,6 +15,8 @@ export class StudentsListComponent implements OnInit {
 
   studentsList: Student[];
   studentTypeList: StudentType[];
+  addressTypeList: AddressType[];
+  allAddresses: Address[];
   student = new Student('', '', '', '', '', '', '', 0, 0, 0, 0);
   error: string;
   typeOfStudentSelect: StudentType;
@@ -23,6 +27,8 @@ export class StudentsListComponent implements OnInit {
     this.initEmptyStudent();
     this.getStudentsReport();
     this.getStudentTypeList();
+    this.getAddressTypeList();
+    this.getAllAddresses();
   }
 
   getStudentsReport() {
@@ -37,6 +43,18 @@ export class StudentsListComponent implements OnInit {
       console.log(data);
     });
   }
+  getAddressTypeList(){
+    this.httpService.getAddressType().subscribe(data => {
+      this.addressTypeList = data;
+      console.log(data);
+    });
+  }
+  getAllAddresses(){
+    this.httpService.getAllAddresses().subscribe(data =>{
+      this.allAddresses = data;
+      console.log(data);
+    });
+  }
   addNewStudent() {
     this.httpService.createNewStudent(this.student).subscribe(
       data => {
@@ -46,10 +64,10 @@ export class StudentsListComponent implements OnInit {
       });
   }
   studentEntityReadyToSend(){
-  return this.student.name.length > 0 && this.student.surname.length > 0 && this.student.fatherName.length > 0
-    && this.student.placeOfBirth.length > 0 && this.student.countryOfBirth.length > 0 && this.student.nationality.length > 0
-    && this.student.nationalityOfBirth.length > 0 && this.student.addressOfResidence !== 0 && this.student.actualAddress !== 0
-    && this.student.addressType !== 0 && this.student.typeOfStudent !== 0;
+    return this.student.name.length > 0 && this.student.surname.length > 0 && this.student.fatherName.length > 0
+      && this.student.placeOfBirth.length > 0 && this.student.countryOfBirth.length > 0 && this.student.nationality.length > 0
+      && this.student.nationalityOfBirth.length > 0 && this.student.addressOfResidence !== 0 && this.student.actualAddress !== 0
+      && this.student.addressType !== 0 && this.student.typeOfStudent !== 0;
   }
   initEmptyStudent(){
     this.student.name = '';
