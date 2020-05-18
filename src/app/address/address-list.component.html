@@ -1,0 +1,168 @@
+<!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal
+</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Address</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+        <form>
+          <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="idInputField">Id</label>
+                  <input type="number" class="form-control" id="idInputField" name="idInputField"
+                         placeholder="Id" [(ngModel)]="address.id">
+                </div>
+              </div>
+            </div>
+            <!--            =====================================================================================-->
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="studentIdInputField">Student Id</label>
+                  <input type="number" class="form-control" id="studentIdInputField" name="studentIdInputField"
+                         placeholder="StudentId" [(ngModel)]="address.studentId">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+            <!--            =====================================================================================-->
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="codeInputField">Kod pocztowy</label>
+                  <input type="text" class="form-control" id="codeInputField" name="codeInputField"
+                         placeholder="Kod pocztowy" [(ngModel)]="address.code">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="streetInputField">Ulica</label>
+                  <input type="text" class="form-control" id="streetInputField" name="streetInputField"
+                         placeholder="Ulica" [(ngModel)]="address.street">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+            </div>
+            <!--            =====================================================================================-->
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="districtInputField">Dzielnica</label>
+                  <input type="text" class="form-control" id="districtInputField" name="districtInputField"
+                         placeholder="Dzielnica" [(ngModel)]="address.district">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="voivodeshipInputField">Województwo</label>
+                  <input type="text" class="form-control" id="voivodeshipInputField" name="voivodeshipInputField"
+                         placeholder="Województwo" [(ngModel)]="address.voivodeship">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+            </div>
+            <!--            =====================================================================================-->
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="cityInputField">Miasto</label>
+                  <input type="text" class="form-control" id="cityInputField" name="cityInputField"
+                         placeholder="Miasto" [(ngModel)]="address.city">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="countryInputField">Kraj</label>
+                  <input type="text" class="form-control" id="countryInputField" name="countryInputField"
+                         placeholder="Kraj" [(ngModel)]="address.country">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+            </div>
+            <!--            =====================================================================================-->
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="houseNumberInputField">Numer domu</label>
+                  <input type="text" class="form-control" id="houseNumberInputField" name="houseNumberInputField"
+                         placeholder="Numer domu" [(ngModel)]="address.houseNumber">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="flatNumberInputField">Numer mieszkania</label>
+                  <input type="text" class="form-control" id="flatNumberInputField" name="flatNumberInputField"
+                         placeholder="Numer mieszkania" [(ngModel)]="address.flatNumber">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+            </div>
+            <!--            =====================================================================================-->
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="phoneInputField">Numer telefonu</label>
+                  <input type="text" class="form-control" id="phoneInputField" name="phoneInputField"
+                         placeholder="Numer telefony" [(ngModel)]="address.phone">
+                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                </div>
+              </div>
+            </div>
+
+
+          <button type="submit" class="btn btn-primary" *ngIf="addressEntityReadyToSend()">Submit</button>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addNewAddress()">Add address</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th>Id</th>
+    <th>Student Id</th>
+    <th>Kod pocztowy</th>
+    <th>Ulica</th>
+    <th>Dzielnica</th>
+    <th>Województwo</th>
+    <th>Miasto</th>
+    <th>Kraj</th>
+    <th>Numer domu</th>
+    <th>Numer mieszkania</th>
+    <th>Numer telefonu</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let record of addressList">
+    <td>{{record.id}}</td>
+    <td>{{record.studentId}}</td>
+    <td>{{record.code}}</td>
+    <td>{{record.street}}</td>
+    <td>{{record.district}}</td>
+    <td>{{record.voivodeship}}</td>
+    <td>{{record.city}}</td>
+    <td>{{record.country}}</td>
+    <td>{{record.houseNumber}}</td>
+    <td>{{record.flatNumber}}</td>
+    <td>{{record.phone}}</td>
+    
+  </tr>
+</table>

@@ -2,7 +2,7 @@ import {Component, OnInit } from '@angular/core';
 import {HttpService} from '../services/http.service';
 import {AdminReport} from '../interfaces/adminReport';
 import {StudentReport } from '../interfaces/studentReport';
-import {Students} from '../interfaces/students';
+import {Student} from '../interfaces/student';
 import {Address} from '../interfaces/address';
 
 
@@ -16,7 +16,7 @@ export class ChildComponent implements OnInit {
 
   report: AdminReport[];
   studentReport: StudentReport[];
-  studentsReport: Students[];
+  studentsReport: Student[];
   addressReport: Address[];
 
   constructor(private httpPosts: HttpService) { }
@@ -45,7 +45,7 @@ export class ChildComponent implements OnInit {
   }
 
   getStudentsReport() {
-    this.httpPosts.getStudentsReport().subscribe(studentController => {
+    this.httpPosts.getStudentsList().subscribe(studentController => {
       this.studentsReport = studentController;
       console.log(this.studentsReport);
     });
