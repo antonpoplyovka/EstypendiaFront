@@ -8,6 +8,7 @@ import {Address} from '../interfaces/address';
 import {environment} from '../../environments/environment';
 import {catchError} from 'rxjs/operators';
 import {StudentType} from '../interfaces/student-type';
+import {AddressType} from '../interfaces/address-type';
 
 @Injectable({
   providedIn: 'root'
@@ -35,30 +36,16 @@ export class HttpService {
         catchError(this.handleError)
       );
   }
-
-  public createNewAddress(address: Address): Observable<any>{
-    return this.httpClient
-      .post(environment.addressURL, address)
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
-
-
-  public getAddressReport(): Observable<Array<Address>> {
+  public getAllAddresses(): Observable<Array<Address>> {
     return this.httpClient.get<Array<Address>>(environment.addressURL);
   }
   public getStudentTypes(): Observable<Array<StudentType>> {
     return this.httpClient.get<Array<StudentType>>(environment.studentTypeURL);
   }
-
-  public createNewStudentType(address: StudentType): Observable<any>{
-    return this.httpClient
-      .post(environment.addressURL, StudentType)
-      .pipe(
-        catchError(this.handleError)
-      );
+  public getAddressType(): Observable<Array<AddressType>> {
+    return this.httpClient.get<Array<AddressType>>(environment.addressTypeURL);
   }
+
 
 
   handleError(error) {
