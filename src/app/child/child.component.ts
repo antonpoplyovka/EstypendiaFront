@@ -52,7 +52,7 @@ export class ChildComponent implements OnInit {
   }
 
   getAddressReport() {
-    this.httpPosts.getAddressReport().subscribe(addressController => {
+    this.httpPosts.getAllAddresses().subscribe(addressController => {
       this.addressReport = addressController;
       console.log(this.addressReport);
     });

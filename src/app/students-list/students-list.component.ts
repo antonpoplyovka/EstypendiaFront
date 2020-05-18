@@ -17,6 +17,7 @@ export class StudentsListComponent implements OnInit {
   studentTypeList: StudentType[];
   addressTypeList: AddressType[];
   allAddresses: Address[];
+  edit = false;
   student = new Student('', '', '', '', '', '', '', 0, 0, 0, 0);
   error: string;
   typeOfStudentSelect: StudentType;
@@ -63,7 +64,19 @@ export class StudentsListComponent implements OnInit {
         this.error = error;
       });
   }
-  studentEntityReadyToSend(){
+  editStudent(){
+    this.httpService.editStudent(this.student).subscribe(
+      data => {
+      },
+      error => {
+        this.error = error;
+      });
+  }
+  prepareEditStudent(student: Student){
+  this.student = student;
+  this.edit = true;
+  }
+  studentEntityReadyToSend() {
     return this.student.name.length > 0 && this.student.surname.length > 0 && this.student.fatherName.length > 0
       && this.student.placeOfBirth.length > 0 && this.student.countryOfBirth.length > 0 && this.student.nationality.length > 0
       && this.student.nationalityOfBirth.length > 0 && this.student.addressOfResidence !== 0 && this.student.actualAddress !== 0

@@ -37,14 +37,7 @@ export class StudentTypeComponent implements OnInit {
       console.log(data);
     });
   }
-  addNewStudentType() {
-    this.httpService.createNewStudentType(this.studentType).subscribe(
-      data => {
-      },
-      error => {
-        this.error = error;
-      });
-  }
+
   studentTypeEntityReadyToSend(){
   return this.studentType.id !== 0 && this.studentType.monthlyPayment !== 0 &&
     this.studentType.description.length > 0;

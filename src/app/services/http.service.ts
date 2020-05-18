@@ -36,6 +36,20 @@ export class HttpService {
         catchError(this.handleError)
       );
   }
+  public createNewAddress( newAddress: Address): Observable<any> {
+    return this.httpClient
+      .post(environment.addressURL, newAddress)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  public editStudent(studentForEdit: Student): Observable<any>{
+    return this.httpClient
+      .put(environment.studentURL + studentForEdit.id, studentForEdit)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   public getAllAddresses(): Observable<Array<Address>> {
     return this.httpClient.get<Array<Address>>(environment.addressURL);
   }

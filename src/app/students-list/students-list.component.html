@@ -169,35 +169,51 @@
       <div class="modal-footer">
 
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" *ngIf="studentEntityReadyToSend()" (click)="addNewStudent()">Add
+        <button type="button" class="btn btn-primary" *ngIf="studentEntityReadyToSend() && !this.edit" (click)="addNewStudent()">Add
           student
         </button>
-        <button type="button" class="btn btn-primary" *ngIf="!studentEntityReadyToSend()" (click)="addNewStudent()"
+        <button type="button" class="btn btn-primary" *ngIf="!studentEntityReadyToSend() && !this.edit"
                 disabled>Add student
         </button>
+<!--        EDIT Buttons =============================-->
+        <button type="button" class="btn btn-primary" *ngIf="this.edit && studentEntityReadyToSend()" (click)="editStudent()">Save
+        </button>
+        <button type="button" class="btn btn-primary" *ngIf="this.edit && !studentEntityReadyToSend()"
+                disabled>Save
+        </button>
+<!--        EDIT Buttons =============================-->
 
       </div>
     </div>
   </div>
 </div>
 <table class="table table-striped">
-  <thead class="thead-dark">
+  <thead>
   <tr>
+    <th>Id</th>
     <th>Imie</th>
     <th>Nazwisko</th>
     <th>Imię ojca</th>
     <th>Miejsce urodzenia</th>
     <th>Kraj urodzenia</th>
     <th>Obywatelstwo</th>
+    <th></th>
+
   </tr>
   </thead>
   <tr *ngFor="let record of studentsList">
+    <th>{{record.id}}</th>
     <td>{{record.name}}</td>
     <td>{{record.surname}}</td>
     <td>{{record.fatherName}}</td>
     <td>{{record.placeOfBirth}}</td>
     <td>{{record.countryOfBirth}}</td>
     <td>{{record.nationalityOfBirth}}</td>
+    <td>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="prepareEditStudent(record)"> Edytuj
+      </button>
+    </td>
+
   </tr>
 </table>
 
