@@ -1,4 +1,4 @@
-export interface StudentReport {
+export class StudentReport {
     paymentAmount?: number;
-    paymentDate?: Date;
+    paymentDate?: string;
 }

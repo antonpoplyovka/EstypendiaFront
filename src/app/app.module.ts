@@ -11,6 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddressListComponent } from './address/address-list.component';
 import { StudentTypeComponent } from './student-type/student-type.component';
 import { AdminReportComponent } from './admin-report/admin-report.component';
+import { StudentReportComponent } from './student-report/student-report.component';
+import { TypeOfHousingComponent } from './type-of-housing/type-of-housing.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { AdminReportComponent } from './admin-report/admin-report.component';
     AddressListComponent,
     StudentTypeComponent,
     AdminReportComponent,
+    StudentReportComponent,
+    TypeOfHousingComponent,
   ],
     imports: [
         BrowserModule,

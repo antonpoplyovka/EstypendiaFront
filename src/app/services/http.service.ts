@@ -21,8 +21,8 @@ export class HttpService {
     return this.httpClient.get<Array<AdminReport>>(environment.adminReportURL);
   }
 
-  public getStudentReport(): Observable<Array<StudentReport>> {
-    return this.httpClient.get<Array<StudentReport>>(environment.studentReportURL);
+  public getStudentReport(studentId: number): Observable<Array<StudentReport>> {
+    return this.httpClient.get<Array<StudentReport>>(environment.studentReportURL + studentId);
   }
 
   public getStudentsList(): Observable<Array<Student>> {
@@ -36,9 +36,23 @@ export class HttpService {
         catchError(this.handleError)
       );
   }
+  public createNewStudentType( studentType: StudentType): Observable<any> {
+    return this.httpClient
+      .post(environment.studentTypeURL, studentType)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   public createNewAddress( newAddress: Address): Observable<any> {
     return this.httpClient
       .post(environment.addressURL, newAddress)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  public editAddress(editedAddress: Address): Observable<any>{
+    return this.httpClient
+      .put(environment.addressURL + editedAddress.id, editedAddress)
       .pipe(
         catchError(this.handleError)
       );

@@ -15,6 +15,7 @@ export class AddressListComponent implements OnInit {
 
   addressList: Address[];
   studentList: Student[];
+  edit = false;
   address = new Address( 0 ,  '' , '' , '' , '' , '' , '' , '', '', '');
   error: string;
   studentTypeList: StudentType[];
@@ -41,14 +42,24 @@ export class AddressListComponent implements OnInit {
         this.error = error;
       });
   }
-
+  editAddress(){
+    this.httpService.editAddress(this.address).subscribe(
+      data => {
+      },
+      error => {
+        this.error = error;
+      });
+  }
   getStudentTypeList(){
     this.httpService.getStudentTypes().subscribe(data => {
       this.studentTypeList = data;
       console.log(data);
     });
   }
-
+  prepareEditAddress(address: Address){
+    this.address = address;
+    this.edit = true;
+  }
 
    addressEntityReadyToSend(){
    return   this.address.code.length > 0
@@ -58,7 +69,6 @@ export class AddressListComponent implements OnInit {
    }
 
   initEmptyAddress(){
-
     this.address.id = 0;
     this.address.code = '';
     this.address.street = '';

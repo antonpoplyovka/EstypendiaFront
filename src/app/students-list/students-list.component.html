@@ -73,7 +73,6 @@
                   <label for="nationalityInputField">Obywatelstwo</label>
                   <input type="text" class="form-control" id="nationalityInputField" name="nationalityInputField"
                          placeholder="Obywatelstwo" [(ngModel)]="student.nationality">
-                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                 </div>
               </div>
             </div>
@@ -169,13 +168,13 @@
       <div class="modal-footer">
 
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" *ngIf="studentEntityReadyToSend() && !this.edit" (click)="addNewStudent()">Dodaj studenta
+        <button type="button" class="btn btn-primary" *ngIf="studentEntityReadyToSend() && !this.edit" (click)="addNewStudent()" data-dismiss="modal">Dodaj studenta
         </button>
         <button type="button" class="btn btn-primary" *ngIf="!studentEntityReadyToSend() && !this.edit"
                 disabled>Add student
         </button>
 <!--        EDIT Buttons =============================-->
-        <button type="button" class="btn btn-primary" *ngIf="this.edit && studentEntityReadyToSend()" (click)="editStudent()">Save
+        <button type="button" class="btn btn-primary" *ngIf="this.edit && studentEntityReadyToSend()" (click)="editStudent()" data-dismiss="modal">Save
         </button>
         <button type="button" class="btn btn-primary" *ngIf="this.edit && !studentEntityReadyToSend()"
                 disabled>Save
@@ -196,6 +195,7 @@
     <th>Miejsce urodzenia</th>
     <th>Kraj urodzenia</th>
     <th>Obywatelstwo</th>
+    <th>Obywatelstwo przy urodzeniu</th>
     <th></th>
 
   </tr>
@@ -207,6 +207,7 @@
     <td>{{record.fatherName}}</td>
     <td>{{record.placeOfBirth}}</td>
     <td>{{record.countryOfBirth}}</td>
+    <td>{{record.nationality}}</td>
     <td>{{record.nationalityOfBirth}}</td>
     <td>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="prepareEditStudent(record)"> Edytuj

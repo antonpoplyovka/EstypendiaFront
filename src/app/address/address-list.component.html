@@ -114,9 +114,18 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" *ngIf="addressEntityReadyToSend()" (click)="createNewAddress()">Add new address
+        <button type="button" class="btn btn-primary" *ngIf="addressEntityReadyToSend() && !this.edit"
+                (click)="createNewAddress()">
+          Add new address
         </button>
-        <button type="button" class="btn btn-primary" *ngIf="!addressEntityReadyToSend()" disabled>Add new address
+        <button type="button" class="btn btn-primary" *ngIf="!addressEntityReadyToSend() && !this.edit" disabled>Add new
+          address
+        </button>
+        <button type="button" class="btn btn-primary" *ngIf="addressEntityReadyToSend() && this.edit"
+                (click)="editAddress()">
+          Zapisz
+        </button>
+        <button type="button" class="btn btn-primary" *ngIf="!addressEntityReadyToSend() && this.edit" disabled>Zapisz
         </button>
       </div>
     </div>
@@ -124,7 +133,7 @@
 </div>
 
 <table class="table table-striped">
-  <thead >
+  <thead>
   <tr>
     <th>Id</th>
     <th>Kod pocztowy</th>
@@ -136,6 +145,7 @@
     <th>Numer domu</th>
     <th>Numer mieszkania</th>
     <th>Numer telefonu</th>
+    <th></th>
   </tr>
   </thead>
   <tr *ngFor="let record of addressList">
@@ -149,6 +159,11 @@
     <td>{{record.houseNumber}}</td>
     <td>{{record.flatNumber}}</td>
     <td>{{record.phone}}</td>
+    <td>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+              (click)="prepareEditAddress(record)"> Edytuj
+      </button>
+    </td>
 
   </tr>
 </table>

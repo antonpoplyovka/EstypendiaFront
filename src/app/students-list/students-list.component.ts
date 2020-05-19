@@ -25,13 +25,16 @@ export class StudentsListComponent implements OnInit {
   constructor(private httpService: HttpService,  private modalService: NgbModal) { }
 
   ngOnInit(): void {
+  this.loadData();
+  }
+
+  loadData(){
     this.initEmptyStudent();
     this.getStudentsReport();
     this.getStudentTypeList();
     this.getAddressTypeList();
     this.getAllAddresses();
   }
-
   getStudentsReport() {
     this.httpService.getStudentsList().subscribe(studentController => {
       this.studentsList = studentController;
@@ -51,7 +54,7 @@ export class StudentsListComponent implements OnInit {
     });
   }
   getAllAddresses(){
-    this.httpService.getAllAddresses().subscribe(data =>{
+    this.httpService.getAllAddresses().subscribe(data => {
       this.allAddresses = data;
       console.log(data);
     });
@@ -59,6 +62,7 @@ export class StudentsListComponent implements OnInit {
   addNewStudent() {
     this.httpService.createNewStudent(this.student).subscribe(
       data => {
+        this.clearAllAndRefreshData();
       },
       error => {
         this.error = error;
@@ -67,6 +71,7 @@ export class StudentsListComponent implements OnInit {
   editStudent(){
     this.httpService.editStudent(this.student).subscribe(
       data => {
+        this.clearAllAndRefreshData();
       },
       error => {
         this.error = error;
@@ -97,5 +102,10 @@ export class StudentsListComponent implements OnInit {
   }
   printStudent(){
     console.log(this.student);
+  }
+  clearAllAndRefreshData(){
+    this.student = new Student('', '', '', '', '', '', '', 0, 0, 0, 0);
+    this.edit = false;
+    this.loadData();
   }
 }
