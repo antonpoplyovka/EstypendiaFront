@@ -169,8 +169,7 @@
       <div class="modal-footer">
 
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" *ngIf="studentEntityReadyToSend() && !this.edit" (click)="addNewStudent()">Add
-          student
+        <button type="button" class="btn btn-primary" *ngIf="studentEntityReadyToSend() && !this.edit" (click)="addNewStudent()">Dodaj studenta
         </button>
         <button type="button" class="btn btn-primary" *ngIf="!studentEntityReadyToSend() && !this.edit"
                 disabled>Add student

@@ -1,6 +1,3 @@
-<!-- Large modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal
-</button>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
      aria-hidden="true">
@@ -18,43 +15,43 @@
         <form>
           <div class="container-fluid">
             <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label for="studentIdInputField">Student Id</label>
-                        <input type="number" class="form-control" id="studentIdInputField" name="studentIdInputField"
-                               placeholder="StudentId" [(ngModel)]="studentType.id">
-                        <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-                    </div>
-              </div>
+
               <div class="col-sm">
                     <div class="form-group">
-                        <label for="monthlyPaymentInputField">Miesięczna opłata</label>
+                        <label for="monthlyPaymentInputField">Wysokość stypendium</label>
                         <input type="number" class="form-control" id="monthlyPaymentInputField" name="monthlyPaymentInputField"
-                               placeholder="MonthlyPayment" [(ngModel)]="studentType.monthlyPayment">
+                               placeholder="Wysokość stypendium" [(ngModel)]="studentType.monthlyPayment">
                         <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                     </div>
               </div>
             </div>
             <!--            =====================================================================================-->
+
             <div class="row">
+
+              <div class="col-sm">
                 <div class="form-group">
-                    <label for="descriptionInputField">Opis</label>
-                    <input type="text" class="form-control" id="descriptionInputField" name="descriptionInputField"
-                           placeholder="Description" [(ngModel)]="studentType.description">
-                    <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                  <label for="descriptionInputField">Opis</label>
+                  <input type="text" class="form-control" id="descriptionInputField" name="descriptionInputField"
+                         placeholder="Opis" [(ngModel)]="studentType.description">
                 </div>
               </div>
             </div>
+
+
+            </div>
             <!--            =====================================================================================-->
 
 
 
-          <button type="submit" class="btn btn-primary" *ngIf="studentTypeEntityReadyToSend()">Submit</button>
         </form>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+        <button type="submit" class="btn btn-primary" *ngIf="studentTypeEntityReadyToSend()">Dodaj nowy typ studenta</button>
+        <button type="submit" class="btn btn-primary" *ngIf="!studentTypeEntityReadyToSend()" disabled>Dodaj nowy typ studenta</button>
+
       </div>
     </div>
   </div>
@@ -63,14 +60,18 @@
 <table class="table table-striped">
   <thead class="thead-dark">
   <tr>
-    <th>Student Id</th>
+    <th>Id</th>
     <th>Miesięczna opłata</th>
     <th>Opis</th>
   </tr>
   </thead>
-  <tr *ngFor="let record of studentType">
+  <tr *ngFor="let record of studentTypeList">
     <td>{{record.id}}</td>
     <td>{{record.monthlyPayment}}</td>
     <td>{{record.description}}</td>
   </tr>
 </table>
+<!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Add new student type
+
+</button>

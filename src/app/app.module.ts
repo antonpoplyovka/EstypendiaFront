@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddressListComponent } from './address/address-list.component';
 import { StudentTypeComponent } from './student-type/student-type.component';
+import { AdminReportComponent } from './admin-report/admin-report.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { StudentTypeComponent } from './student-type/student-type.component';
     StudentsListComponent,
     AddressListComponent,
     StudentTypeComponent,
+    AdminReportComponent,
   ],
     imports: [
         BrowserModule,

@@ -11,11 +11,9 @@ import {StudentType} from '../interfaces/student-type';
 })
 export class StudentTypeComponent implements OnInit {
 
-  studentsList: Student[];
   studentTypeList: StudentType[];
   studentType = new StudentType();
   error: string;
-  typeOfStudentSelect: StudentType;
 
   constructor(private httpService: HttpService,  private modalService: NgbModal) { }
 
@@ -39,12 +37,11 @@ export class StudentTypeComponent implements OnInit {
   }
 
   studentTypeEntityReadyToSend(){
-  return this.studentType.id !== 0 && this.studentType.monthlyPayment !== 0 &&
+  return  this.studentType.monthlyPayment > 0 &&
     this.studentType.description.length > 0;
   }
   initEmptyStudentType(){
-    this.studentType.id = 0 ;
-    this.studentType.monthlyPayment = 0 ;
+    this.studentType.monthlyPayment = null ;
     this.studentType.description = '';
   }
 
