@@ -1,0 +1,44 @@
+<form>
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col">
+        <div class="form-group">
+          <h5 for="studentIdForReportInputField">Wygeneruj raport wypłat stypendiów dla studenta</h5>
+
+          <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <input type="number" class="form-control" id="studentIdForReportInputField"
+                 name="studentIdForReportInputField"
+                 placeholder="Numer studenta" [(ngModel)]="studentId">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+                  *ngIf="this.studentIdReady()" (click)="getStudentReport()">Wygeneruj raport
+          </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+                  *ngIf="!this.studentIdReady()" disabled>Wygeneruj raport
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<table class="table table-striped" *ngIf="!empty">
+  <thead>
+  <tr>
+    <th>Kwota</th>
+    <th>Data wypłaty</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let record of studentReport">
+    <td>{{record.paymentAmount}}</td>
+    <td>{{record.paymentDate}}</td>
+  </tr>
+</table>
