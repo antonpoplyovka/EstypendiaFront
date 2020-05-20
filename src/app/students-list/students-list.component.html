@@ -167,17 +167,17 @@
       </div>
       <div class="modal-footer">
 
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
         <button type="button" class="btn btn-primary" *ngIf="studentEntityReadyToSend() && !this.edit" (click)="addNewStudent()" data-dismiss="modal">Dodaj studenta
         </button>
         <button type="button" class="btn btn-primary" *ngIf="!studentEntityReadyToSend() && !this.edit"
-                disabled>Add student
+                disabled>Dodaj studenta
         </button>
 <!--        EDIT Buttons =============================-->
-        <button type="button" class="btn btn-primary" *ngIf="this.edit && studentEntityReadyToSend()" (click)="editStudent()" data-dismiss="modal">Save
+        <button type="button" class="btn btn-primary" *ngIf="this.edit && studentEntityReadyToSend()" (click)="editStudent()" data-dismiss="modal">Zapisz
         </button>
         <button type="button" class="btn btn-primary" *ngIf="this.edit && !studentEntityReadyToSend()"
-                disabled>Save
+                disabled>Zapisz
         </button>
 <!--        EDIT Buttons =============================-->
 

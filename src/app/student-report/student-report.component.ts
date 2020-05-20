@@ -11,6 +11,7 @@ import { formatDate} from '@angular/common';
 export class StudentReportComponent implements OnInit {
   studentId: number = null;
   empty = true;
+  showAlert = false;
   studentReport: StudentReport[];
 
   constructor(private httpService: HttpService) {
@@ -29,9 +30,11 @@ export class StudentReportComponent implements OnInit {
       this.studentReport = studentTypeController;
       if (this.studentReport.length === 0) {
         this.empty = true;
+        this.showAlert = true;
         console.log(this.studentReport.length);
       } else {
         this.empty = false;
+        this.showAlert = false;
       }
       console.log(this.studentReport);
 

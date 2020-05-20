@@ -13,12 +13,17 @@ export class StudentTypeComponent implements OnInit {
 
   studentTypeList: StudentType[];
   studentType = new StudentType();
+  edit = false;
   error: string;
 
   constructor(private httpService: HttpService, private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData() {
     this.initEmptyStudentType();
     this.getStudentTypes();
     this.getStudentTypeList();
@@ -27,6 +32,16 @@ export class StudentTypeComponent implements OnInit {
   addNewStudentType() {
     this.httpService.createNewStudentType(this.studentType).subscribe(
       data => {
+        this.clearAllAndRefreshData();
+      },
+      error => {
+        this.error = error;
+      });
+  }
+  editStudentType(){
+    this.httpService.editStudentType(this.studentType).subscribe(
+      data => {
+        this.clearAllAndRefreshData();
       },
       error => {
         this.error = error;
@@ -46,7 +61,10 @@ export class StudentTypeComponent implements OnInit {
       console.log(data);
     });
   }
-
+  prepareEditStudentType(studentType: StudentType){
+    this.studentType = studentType;
+    this.edit = true;
+  }
   studentTypeEntityReadyToSend() {
     return this.studentType.monthlyPayment > 0 &&
       this.studentType.description.length > 0;
@@ -59,5 +77,11 @@ export class StudentTypeComponent implements OnInit {
 
   printStudentType() {
     console.log(this.studentType);
+  }
+
+  clearAllAndRefreshData() {
+    this.studentType = new StudentType();
+    this.edit = false;
+    this.loadData();
   }
 }

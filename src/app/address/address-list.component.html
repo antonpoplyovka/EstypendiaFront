@@ -113,13 +113,13 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
         <button type="button" class="btn btn-primary" *ngIf="addressEntityReadyToSend() && !this.edit"
                 (click)="createNewAddress()">
-          Add new address
+          Dodaj nowy adres
         </button>
-        <button type="button" class="btn btn-primary" *ngIf="!addressEntityReadyToSend() && !this.edit" disabled>Add new
-          address
+        <button type="button" class="btn btn-primary" *ngIf="!addressEntityReadyToSend() && !this.edit" disabled>Dodaj
+          nowy adres
         </button>
         <button type="button" class="btn btn-primary" *ngIf="addressEntityReadyToSend() && this.edit"
                 (click)="editAddress()">
@@ -167,5 +167,5 @@
 
   </tr>
 </table>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Add new Address
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Dodaj nowy adres
 </button>

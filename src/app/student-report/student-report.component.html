@@ -30,6 +30,11 @@
   </div>
 </form>
 
+<div class="alert alert-primary" role="alert" *ngIf="showAlert">
+  Nie znaleziono danych dla podanego numeru studenta
+</div>
+
+
 <table class="table table-striped" *ngIf="!empty">
   <thead>
   <tr>

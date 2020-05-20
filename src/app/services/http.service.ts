@@ -57,6 +57,13 @@ export class HttpService {
         catchError(this.handleError)
       );
   }
+  public editStudentType(editedStudentType: StudentType){
+    return this.httpClient
+      .put(environment.studentTypeURL + editedStudentType.id, editedStudentType)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   public editStudent(studentForEdit: Student): Observable<any>{
     return this.httpClient
       .put(environment.studentURL + studentForEdit.id, studentForEdit)
