@@ -1,0 +1,17 @@
+
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Imię</th>
+    <th>Nazwisko</th>
+    <th>Kwota stypendium</th>
+
+  </tr>
+  </thead>
+  <tr *ngFor="let record of report">
+    <td>{{record.name}}</td>
+    <td>{{record.surname}}</td>
+    <td>{{record.monthlyPayment}}</td>
+  </tr>
+</table>

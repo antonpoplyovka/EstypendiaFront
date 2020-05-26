@@ -8,6 +8,7 @@ import {Address} from '../interfaces/address';
 import {environment} from '../../environments/environment';
 import {catchError} from 'rxjs/operators';
 import {StudentType} from '../interfaces/student-type';
+import {AddressType} from '../interfaces/address-type';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,8 @@ export class HttpService {
     return this.httpClient.get<Array<AdminReport>>(environment.adminReportURL);
   }
 
-  public getStudentReport(): Observable<Array<StudentReport>> {
-    return this.httpClient.get<Array<StudentReport>>(environment.studentReportURL);
+  public getStudentReport(studentId: number): Observable<Array<StudentReport>> {
+    return this.httpClient.get<Array<StudentReport>>(environment.studentReportURL + studentId);
   }
 
   public getStudentsList(): Observable<Array<Student>> {
@@ -35,30 +36,51 @@ export class HttpService {
         catchError(this.handleError)
       );
   }
-
-  public createNewAddress(address: Address): Observable<any>{
+  public createNewStudentType( studentType: StudentType): Observable<any> {
     return this.httpClient
-      .post(environment.addressURL, address)
+      .post(environment.studentTypeURL, studentType)
       .pipe(
         catchError(this.handleError)
       );
   }
-
-
-  public getAddressReport(): Observable<Array<Address>> {
+  public createNewAddress( newAddress: Address): Observable<any> {
+    return this.httpClient
+      .post(environment.addressURL, newAddress)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  public editAddress(editedAddress: Address): Observable<any>{
+    return this.httpClient
+      .put(environment.addressURL + editedAddress.id, editedAddress)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  public editStudentType(editedStudentType: StudentType){
+    return this.httpClient
+      .put(environment.studentTypeURL + editedStudentType.id, editedStudentType)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  public editStudent(studentForEdit: Student): Observable<any>{
+    return this.httpClient
+      .put(environment.studentURL + studentForEdit.id, studentForEdit)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  public getAllAddresses(): Observable<Array<Address>> {
     return this.httpClient.get<Array<Address>>(environment.addressURL);
   }
   public getStudentTypes(): Observable<Array<StudentType>> {
     return this.httpClient.get<Array<StudentType>>(environment.studentTypeURL);
   }
-
-  public createNewStudentType(address: StudentType): Observable<any>{
-    return this.httpClient
-      .post(environment.addressURL, StudentType)
-      .pipe(
-        catchError(this.handleError)
-      );
+  public getAddressType(): Observable<Array<AddressType>> {
+    return this.httpClient.get<Array<AddressType>>(environment.addressTypeURL);
   }
+
 
 
   handleError(error) {

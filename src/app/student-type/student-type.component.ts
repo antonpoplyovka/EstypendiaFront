@@ -1,4 +1,4 @@
-import {Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Student} from '../interfaces/student';
 import {HttpService} from '../services/http.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -11,18 +11,41 @@ import {StudentType} from '../interfaces/student-type';
 })
 export class StudentTypeComponent implements OnInit {
 
-  studentsList: Student[];
   studentTypeList: StudentType[];
   studentType = new StudentType();
+  edit = false;
   error: string;
-  typeOfStudentSelect: StudentType;
 
-  constructor(private httpService: HttpService,  private modalService: NgbModal) { }
+  constructor(private httpService: HttpService, private modalService: NgbModal) {
+  }
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData() {
     this.initEmptyStudentType();
     this.getStudentTypes();
     this.getStudentTypeList();
+  }
+
+  addNewStudentType() {
+    this.httpService.createNewStudentType(this.studentType).subscribe(
+      data => {
+        this.clearAllAndRefreshData();
+      },
+      error => {
+        this.error = error;
+      });
+  }
+  editStudentType(){
+    this.httpService.editStudentType(this.studentType).subscribe(
+      data => {
+        this.clearAllAndRefreshData();
+      },
+      error => {
+        this.error = error;
+      });
   }
 
   getStudentTypes() {
@@ -31,31 +54,34 @@ export class StudentTypeComponent implements OnInit {
       console.log(this.studentTypeList);
     });
   }
-  getStudentTypeList(){
+
+  getStudentTypeList() {
     this.httpService.getStudentTypes().subscribe(data => {
       this.studentTypeList = data;
       console.log(data);
     });
   }
-  addNewStudentType() {
-    this.httpService.createNewStudentType(this.studentType).subscribe(
-      data => {
-      },
-      error => {
-        this.error = error;
-      });
+  prepareEditStudentType(studentType: StudentType){
+    this.studentType = studentType;
+    this.edit = true;
   }
-  studentTypeEntityReadyToSend(){
-  return this.studentType.id !== 0 && this.studentType.monthlyPayment !== 0 &&
-    this.studentType.description.length > 0;
+  studentTypeEntityReadyToSend() {
+    return this.studentType.monthlyPayment > 0 &&
+      this.studentType.description.length > 0;
   }
-  initEmptyStudentType(){
-    this.studentType.id = 0 ;
-    this.studentType.monthlyPayment = 0 ;
+
+  initEmptyStudentType() {
+    this.studentType.monthlyPayment = null;
     this.studentType.description = '';
   }
 
-  printStudentType(){
+  printStudentType() {
     console.log(this.studentType);
+  }
+
+  clearAllAndRefreshData() {
+    this.studentType = new StudentType();
+    this.edit = false;
+    this.loadData();
   }
 }

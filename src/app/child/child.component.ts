@@ -23,7 +23,6 @@ export class ChildComponent implements OnInit {
 
   ngOnInit(): void {
     this.getReport();
-    this.getStudentReport();
     this.getStudentsReport();
     this.getAddressReport();
   }
@@ -36,13 +35,7 @@ export class ChildComponent implements OnInit {
 
   }
 
-  getStudentReport() {
-    this.httpPosts.getStudentReport().subscribe(studentReportDTORecords => {
-      this.studentReport = studentReportDTORecords;
-      console.log(this.studentReport);
-    });
 
-  }
 
   getStudentsReport() {
     this.httpPosts.getStudentsList().subscribe(studentController => {
@@ -52,7 +45,7 @@ export class ChildComponent implements OnInit {
   }
 
   getAddressReport() {
-    this.httpPosts.getAddressReport().subscribe(addressController => {
+    this.httpPosts.getAllAddresses().subscribe(addressController => {
       this.addressReport = addressController;
       console.log(this.addressReport);
     });

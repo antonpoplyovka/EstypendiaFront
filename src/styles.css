@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+.navbar{
+  background-color: #e3f2fd;
+  margin-bottom: 10px;
+}
+.nav-link{
+  color: white;
+}
+
+thead{
+  background-color: #e3f2fd;
+
+}

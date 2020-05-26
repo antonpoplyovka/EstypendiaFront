@@ -15,7 +15,8 @@ export class AddressListComponent implements OnInit {
 
   addressList: Address[];
   studentList: Student[];
-  address = new Address( 0 , 0 , '' , '' , '' , '' , '' , '' , '', '', '');
+  edit = false;
+  address = new Address( 0 ,  '' , '' , '' , '' , '' , '' , '', '', '');
   error: string;
   studentTypeList: StudentType[];
 
@@ -28,19 +29,12 @@ export class AddressListComponent implements OnInit {
   }
 
   getAddressReport() {
-    this.httpService.getAddressReport().subscribe(addressController => {
+    this.httpService.getAllAddresses().subscribe(addressController => {
       this.addressList = addressController;
       console.log(this.addressList);
     });
   }
-
-  getStudentTypeList(){
-    this.httpService.getStudentTypes().subscribe(data => {
-      this.studentTypeList = data;
-      console.log(data);
-    });
-  }
-  addNewAddress() {
+  createNewAddress(){
     this.httpService.createNewAddress(this.address).subscribe(
       data => {
       },
@@ -48,18 +42,34 @@ export class AddressListComponent implements OnInit {
         this.error = error;
       });
   }
+  editAddress(){
+    this.httpService.editAddress(this.address).subscribe(
+      data => {
+      },
+      error => {
+        this.error = error;
+      });
+  }
+  getStudentTypeList(){
+    this.httpService.getStudentTypes().subscribe(data => {
+      this.studentTypeList = data;
+      console.log(data);
+    });
+  }
+  prepareEditAddress(address: Address){
+    this.address = address;
+    this.edit = true;
+  }
 
    addressEntityReadyToSend(){
-   return this.address.id !== 0 && this.address.studentId !== 0 && this.address.code.length > 0
+   return   this.address.code.length > 0
      && this.address.street.length > 0 && this.address.district.length > 0 && this.address.voivodeship.length > 0
      && this.address.city.length > 0 && this.address.country.length > 0 && this.address.phone.length > 0
-     && this.address.houseNumber.length > 0 &&  this.address.flatNumber.length > 0;
+     && this.address.houseNumber.length > 0;
    }
 
   initEmptyAddress(){
-
     this.address.id = 0;
-    this.address.studentId = 0;
     this.address.code = '';
     this.address.street = '';
     this.address.district = '';
