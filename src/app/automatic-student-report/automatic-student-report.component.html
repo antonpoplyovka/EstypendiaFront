@@ -1,0 +1,12 @@
+<table class="table table-striped" *ngIf="!empty">
+  <thead>
+  <tr>
+    <th>Kwota</th>
+    <th>Data wypłaty</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let record of studentReport">
+    <td>{{record.paymentAmount}}</td>
+    <td>{{record.paymentDate}}</td>
+  </tr>
+</table>

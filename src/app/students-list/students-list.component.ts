@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Student} from '../interfaces/student';
 import {HttpService} from '../services/http.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -18,18 +18,22 @@ export class StudentsListComponent implements OnInit {
   addressTypeList: AddressType[];
   allAddresses: Address[];
   edit = false;
-  student = new Student('', '', '', '', '', '', '', 0, 0, 0, 0);
+  student = new Student('', '', '', '', '', '', '', '', 0, 0, 0, 0);
+
   error: string;
   typeOfStudentSelect: StudentType;
 
-  constructor(private httpService: HttpService,  private modalService: NgbModal) { }
-
-  ngOnInit(): void {
-  this.loadData();
+  constructor(private httpService: HttpService, private modalService: NgbModal) {
   }
 
-  loadData(){
+  ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData() {
+
     this.initEmptyStudent();
+    this.getStudentsReport();
     this.getStudentsReport();
     this.getStudentTypeList();
     this.getAddressTypeList();
@@ -41,24 +45,30 @@ export class StudentsListComponent implements OnInit {
       console.log(this.studentsList);
     });
   }
-  getStudentTypeList(){
+
+  getStudentTypeList() {
     this.httpService.getStudentTypes().subscribe(data => {
       this.studentTypeList = data;
       console.log(data);
     });
   }
-  getAddressTypeList(){
+
+  getAddressTypeList() {
+
     this.httpService.getAddressType().subscribe(data => {
       this.addressTypeList = data;
       console.log(data);
     });
   }
-  getAllAddresses(){
+
+  getAllAddresses() {
+
     this.httpService.getAllAddresses().subscribe(data => {
       this.allAddresses = data;
       console.log(data);
     });
   }
+
   addNewStudent() {
     this.httpService.createNewStudent(this.student).subscribe(
       data => {
@@ -68,7 +78,9 @@ export class StudentsListComponent implements OnInit {
         this.error = error;
       });
   }
-  editStudent(){
+
+  editStudent() {
+
     this.httpService.editStudent(this.student).subscribe(
       data => {
         this.clearAllAndRefreshData();
@@ -77,20 +89,26 @@ export class StudentsListComponent implements OnInit {
         this.error = error;
       });
   }
-  prepareEditStudent(student: Student){
-  this.student = student;
-  this.edit = true;
+
+  prepareEditStudent(student: Student) {
+    this.student = student;
+    this.edit = true;
   }
+
   studentEntityReadyToSend() {
-    return this.student.name.length > 0 && this.student.surname.length > 0 && this.student.fatherName.length > 0
+    return this.student.name.length > 0 && this.student.surname.length > 0 && this.student.surname.length > 0
+      && this.student.fatherName.length > 0
+
       && this.student.placeOfBirth.length > 0 && this.student.countryOfBirth.length > 0 && this.student.nationality.length > 0
       && this.student.nationalityOfBirth.length > 0 && this.student.addressOfResidence !== 0 && this.student.actualAddress !== 0
       && this.student.addressType !== 0 && this.student.typeOfStudent !== 0;
   }
-  initEmptyStudent(){
+
+  initEmptyStudent() {
     this.student.name = '';
     this.student.surname = '';
     this.student.fatherName = '';
+    this.student.email = '';
     this.student.placeOfBirth = '';
     this.student.countryOfBirth = '';
     this.student.nationality = '';
@@ -100,11 +118,14 @@ export class StudentsListComponent implements OnInit {
     this.student.addressType = 0;
     this.student.typeOfStudent = 0;
   }
-  printStudent(){
+
+  printStudent() {
     console.log(this.student);
   }
-  clearAllAndRefreshData(){
-    this.student = new Student('', '', '', '', '', '', '', 0, 0, 0, 0);
+
+  clearAllAndRefreshData() {
+    this.student = new Student('', '', '', '', '', '', '', '', 0, 0, 0, 0);
+
     this.edit = false;
     this.loadData();
   }

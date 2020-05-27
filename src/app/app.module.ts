@@ -13,6 +13,8 @@ import { StudentTypeComponent } from './student-type/student-type.component';
 import { AdminReportComponent } from './admin-report/admin-report.component';
 import { StudentReportComponent } from './student-report/student-report.component';
 import { TypeOfHousingComponent } from './type-of-housing/type-of-housing.component';
+import { AutomaticStudentReportComponent } from './automatic-student-report/automatic-student-report.component';
+
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { TypeOfHousingComponent } from './type-of-housing/type-of-housing.compon
     AdminReportComponent,
     StudentReportComponent,
     TypeOfHousingComponent,
+    AutomaticStudentReportComponent,
+
   ],
     imports: [
         BrowserModule,
