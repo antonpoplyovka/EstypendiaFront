@@ -100,6 +100,7 @@
                   <input type="email" class="form-control" id="emailInputFiled"
                          name="emailInputFiled" placeholder="name@google.com"
                          [(ngModel)]="student.email">
+
                 </div>
               </div>
             </div>
@@ -114,11 +115,13 @@
                     <option selected="selected" [ngValue]="0">Adres zameldowania</option>
                     <option *ngFor="let record of allAddresses" [ngValue]="record.id"
                             name="addressOfResidenceOption">{{record.country}}/
+
                       {{record.city}}/{{record.code}}
                       /{{record.street}} {{record.houseNumber}} {{record.flatNumber}}</option>
                   </select>
                 </div>
               </div>
+
             </div>
             <!--            =====================================================================================-->
             <div class="row">
@@ -131,12 +134,14 @@
                             name="actualAddressOption">{{record.country}}/
                       {{record.city}}/{{record.code}}
                       /{{record.street}} {{record.houseNumber}} {{record.flatNumber}}</option>
+
                   </select>
                 </div>
+
+
               </div>
 
             </div>
-            <!--            =====================================================================================-->
             <div class="row">
               <div class="col-sm">
 
@@ -163,6 +168,7 @@
                             name="addressTypeOption">{{record.description}}</option>
                   </select>
                 </div>
+
               </div>
             </div>
             <div class="row">
@@ -208,6 +214,7 @@
     <th>Kraj urodzenia</th>
     <th>Obywatelstwo</th>
     <th>Email</th>
+
     <th></th>
 
   </tr>
@@ -221,6 +228,7 @@
     <td>{{record.countryOfBirth}}</td>
     <td>{{record.nationality}}</td>
     <td>{{record.email}}</td>
+
     <td>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="prepareEditStudent(record)"> Edytuj
       </button>

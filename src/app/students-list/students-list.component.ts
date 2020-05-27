@@ -19,6 +19,7 @@ export class StudentsListComponent implements OnInit {
   allAddresses: Address[];
   edit = false;
   student = new Student('', '', '', '', '', '', '', '', 0, 0, 0, 0);
+
   error: string;
   typeOfStudentSelect: StudentType;
 
@@ -30,6 +31,7 @@ export class StudentsListComponent implements OnInit {
   }
 
   loadData() {
+
     this.initEmptyStudent();
     this.getStudentsReport();
     this.getStudentsReport();
@@ -37,7 +39,6 @@ export class StudentsListComponent implements OnInit {
     this.getAddressTypeList();
     this.getAllAddresses();
   }
-
   getStudentsReport() {
     this.httpService.getStudentsList().subscribe(studentController => {
       this.studentsList = studentController;
@@ -53,6 +54,7 @@ export class StudentsListComponent implements OnInit {
   }
 
   getAddressTypeList() {
+
     this.httpService.getAddressType().subscribe(data => {
       this.addressTypeList = data;
       console.log(data);
@@ -60,6 +62,7 @@ export class StudentsListComponent implements OnInit {
   }
 
   getAllAddresses() {
+
     this.httpService.getAllAddresses().subscribe(data => {
       this.allAddresses = data;
       console.log(data);
@@ -77,6 +80,7 @@ export class StudentsListComponent implements OnInit {
   }
 
   editStudent() {
+
     this.httpService.editStudent(this.student).subscribe(
       data => {
         this.clearAllAndRefreshData();
@@ -94,6 +98,7 @@ export class StudentsListComponent implements OnInit {
   studentEntityReadyToSend() {
     return this.student.name.length > 0 && this.student.surname.length > 0 && this.student.surname.length > 0
       && this.student.fatherName.length > 0
+
       && this.student.placeOfBirth.length > 0 && this.student.countryOfBirth.length > 0 && this.student.nationality.length > 0
       && this.student.nationalityOfBirth.length > 0 && this.student.addressOfResidence !== 0 && this.student.actualAddress !== 0
       && this.student.addressType !== 0 && this.student.typeOfStudent !== 0;
@@ -120,6 +125,7 @@ export class StudentsListComponent implements OnInit {
 
   clearAllAndRefreshData() {
     this.student = new Student('', '', '', '', '', '', '', '', 0, 0, 0, 0);
+
     this.edit = false;
     this.loadData();
   }

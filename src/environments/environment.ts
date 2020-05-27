@@ -12,6 +12,7 @@ export const environment = {
   addressTypeURL: 'http://localhost:8081/api/v1/typeOfHousing/',
   userInfoURL: 'http://localhost:8081/userInfo',
   isAdminURL: 'http://localhost:8081/isAdmin'
+
 };
 
 /*

@@ -33,6 +33,7 @@ export class HttpService {
   }
   public getAutomaticStudentReport(): Observable<Array<StudentReport>> {
     return this.httpClient.get<Array<StudentReport>>(environment.studentReportURL, {withCredentials: true});
+
   }
 
   public getStudentsList(): Observable<Array<Student>> {
@@ -49,6 +50,7 @@ export class HttpService {
   public createNewStudentType( studentType: StudentType): Observable<any> {
     return this.httpClient
       .post(environment.studentTypeURL, studentType, {withCredentials: true})
+
       .pipe(
         catchError(this.handleError)
       );
@@ -56,6 +58,7 @@ export class HttpService {
   public createNewAddress( newAddress: Address): Observable<any> {
     return this.httpClient
       .post(environment.addressURL, newAddress, {withCredentials: true})
+
       .pipe(
         catchError(this.handleError)
       );
@@ -63,6 +66,7 @@ export class HttpService {
   public editAddress(editedAddress: Address): Observable<any>{
     return this.httpClient
       .put(environment.addressURL + editedAddress.id, editedAddress, {withCredentials: true})
+
       .pipe(
         catchError(this.handleError)
       );
@@ -70,6 +74,7 @@ export class HttpService {
   public editStudentType(editedStudentType: StudentType){
     return this.httpClient
       .put(environment.studentTypeURL + editedStudentType.id, editedStudentType, {withCredentials: true})
+
       .pipe(
         catchError(this.handleError)
       );
@@ -77,6 +82,7 @@ export class HttpService {
   public editStudent(studentForEdit: Student): Observable<any>{
     return this.httpClient
       .put(environment.studentURL + studentForEdit.id, studentForEdit, {withCredentials: true})
+
       .pipe(
         catchError(this.handleError)
       );
@@ -89,6 +95,7 @@ export class HttpService {
   }
   public getAddressType(): Observable<Array<AddressType>> {
     return this.httpClient.get<Array<AddressType>>(environment.addressTypeURL, {withCredentials: true});
+
   }
 
 

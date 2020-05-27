@@ -16,6 +16,7 @@ import { TypeOfHousingComponent } from './type-of-housing/type-of-housing.compon
 import { AutomaticStudentReportComponent } from './automatic-student-report/automatic-student-report.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { AutomaticStudentReportComponent } from './automatic-student-report/auto
     StudentReportComponent,
     TypeOfHousingComponent,
     AutomaticStudentReportComponent,
+
   ],
     imports: [
         BrowserModule,
