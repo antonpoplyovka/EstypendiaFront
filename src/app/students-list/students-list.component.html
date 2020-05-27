@@ -92,6 +92,18 @@
               </div>
             </div>
             <!--            =====================================================================================-->
+
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="emailInputFiled">Email</label>
+                  <input type="email" class="form-control" id="emailInputFiled"
+                         name="emailInputFiled" placeholder="name@google.com"
+                         [(ngModel)]="student.email">
+                </div>
+              </div>
+            </div>
+            <!--            =====================================================================================-->
             <div class="row">
 
 
@@ -195,7 +207,7 @@
     <th>Miejsce urodzenia</th>
     <th>Kraj urodzenia</th>
     <th>Obywatelstwo</th>
-    <th>Obywatelstwo przy urodzeniu</th>
+    <th>Email</th>
     <th></th>
 
   </tr>
@@ -208,7 +220,7 @@
     <td>{{record.placeOfBirth}}</td>
     <td>{{record.countryOfBirth}}</td>
     <td>{{record.nationality}}</td>
-    <td>{{record.nationalityOfBirth}}</td>
+    <td>{{record.email}}</td>
     <td>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="prepareEditStudent(record)"> Edytuj
       </button>

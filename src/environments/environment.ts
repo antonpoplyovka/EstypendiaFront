@@ -9,7 +9,9 @@ export const environment = {
   studentReportURL: 'http://localhost:8081/api/v1/report/student/',
   addressURL: 'http://localhost:8081/api/v1/address/',
   studentTypeURL: 'http://localhost:8081/api/v1/typeOfStudent/',
-  addressTypeURL: 'http://localhost:8081/api/v1/typeOfHousing/'
+  addressTypeURL: 'http://localhost:8081/api/v1/typeOfHousing/',
+  userInfoURL: 'http://localhost:8081/userInfo',
+  isAdminURL: 'http://localhost:8081/isAdmin'
 };
 
 /*

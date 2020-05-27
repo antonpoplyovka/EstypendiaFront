@@ -1,3 +1,51 @@
+<nav *ngIf="!userUi()" class="navbar navbar-expand-lg navbar-dark bg-primary" >
+  <a class="navbar-brand" href="index.html"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html" routerLinkActive="active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/students-list">Studeci</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="address-list" routerLinkActive="active">Adresy</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="student-type" routerLinkActive="active">Rodzaje studentów</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="admin-report" routerLinkActive="active">Raport stypendiów</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="student-report" routerLinkActive="active">Historia wypłat</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-primary my-2 my-sm-0"  (click)="logoutUser()">Logout</button>
+    </form>
+  </div>
+</nav>
 
-<!--<app-child></app-child>-->
-<router-outlet></router-outlet>
+<nav *ngIf="userUi()" class="navbar navbar-expand-lg navbar-dark bg-primary" >
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="userNavbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html" routerLinkActive="active">Historia wypłat</a>
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-primary my-2 my-sm-0"  (click)="logoutUser()">Logout</button>
+    </form>
+  </div>
+</nav>
+<router-outlet *ngIf="!userUi()"></router-outlet>
+<app-automatic-student-report *ngIf="userUi()"></app-automatic-student-report>
+
