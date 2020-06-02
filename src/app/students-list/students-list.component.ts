@@ -39,6 +39,8 @@ export class StudentsListComponent implements OnInit {
     this.getAddressTypeList();
     this.getAllAddresses();
   }
+
+
   getStudentsReport() {
     this.httpService.getStudentsList().subscribe(studentController => {
       this.studentsList = studentController;
@@ -130,3 +132,5 @@ export class StudentsListComponent implements OnInit {
     this.loadData();
   }
 }
+
+

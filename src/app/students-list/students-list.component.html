@@ -110,15 +110,15 @@
 
               <div class="col-sm">
                 <div class="form-group">
-                  <select class="form-control" id="addressOfResidenceSelect" [(ngModel)]="student.addressOfResidence"
-                          (change)="printStudent()" name="addressOfResidenceSelect">
-                    <option selected="selected" [ngValue]="0">Adres zameldowania</option>
-                    <option *ngFor="let record of allAddresses" [ngValue]="record.id"
-                            name="addressOfResidenceOption">{{record.country}}/
+                  <select class="selectpicker" data-live-search="true" >
+                     <option selected="selected" [ngValue]="0">Adres zameldowania</option>
+                      <option *ngFor="let record of allAddresses" [ngValue]="record.id"
+                              name="addressOfResidenceOption">{{record.country}}/
 
-                      {{record.city}}/{{record.code}}
-                      /{{record.street}} {{record.houseNumber}} {{record.flatNumber}}</option>
-                  </select>
+                        {{record.city}}/{{record.code}}
+                        /{{record.street}} {{record.houseNumber}} {{record.flatNumber}}</option>
+                    
+                   </select>
                 </div>
               </div>
 
@@ -127,8 +127,7 @@
             <div class="row">
               <div class="col-sm">
                 <div class="form-group">
-                  <select class="form-control" id="actualAddressSelect" [(ngModel)]="student.actualAddress"
-                          (change)="printStudent()" name="actualAddressSelect">
+                  <select class="selectpicker" data-live-search="true" >
                     <option selected="selected" [ngValue]="0">Adres zamieszkania</option>
                     <option *ngFor="let record of allAddresses" [ngValue]="record.id"
                             name="actualAddressOption">{{record.country}}/
@@ -147,8 +146,7 @@
 
 
                 <div class="form-group">
-                  <select class="form-control" id="studentTypeSelect" [(ngModel)]="student.typeOfStudent"
-                          (change)="printStudent()" name="studentTypeSelect">
+                  <select class="selectpicker" data-live-search="true" >
                     <option selected="selected" [ngValue]="0">Typ studenta</option>
                     <option *ngFor="let record of studentTypeList" [ngValue]="record.id"
                             name="studentTypeOption">{{record.description}}</option>
@@ -161,8 +159,7 @@
             <div class="row">
               <div class="col-sm">
                 <div class="form-group">
-                  <select class="form-control" id="addressTypeSelect" [(ngModel)]="student.addressType"
-                          (change)="printStudent()" name="addressTypeSelect">
+                  <select class="selectpicker" data-live-search="true" >
                     <option selected="selected" [ngValue]="0">Typ Zamieszkania</option>
                     <option *ngFor="let record of addressTypeList" [ngValue]="record.id"
                             name="addressTypeOption">{{record.description}}</option>
