@@ -31,7 +31,6 @@ export class AddressListComponent implements OnInit {
   getAddressReport() {
     this.httpService.getAllAddresses().subscribe(addressController => {
       this.addressList = addressController;
-      console.log(this.addressList);
     });
   }
   createNewAddress(){
@@ -53,7 +52,6 @@ export class AddressListComponent implements OnInit {
   getStudentTypeList(){
     this.httpService.getStudentTypes().subscribe(data => {
       this.studentTypeList = data;
-      console.log(data);
     });
   }
   prepareEditAddress(address: Address){
@@ -82,6 +80,5 @@ export class AddressListComponent implements OnInit {
   }
 
   printAddress(){
-    console.log(this.address);
   }
 }

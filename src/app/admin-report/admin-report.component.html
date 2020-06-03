@@ -1,5 +1,3 @@
-
-
 <table class="table table-striped">
   <thead>
   <tr>
@@ -15,3 +13,14 @@
     <td>{{record.monthlyPayment}}</td>
   </tr>
 </table>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+        (click)="getPdfReport()">Wygeneruj pdf
+</button>
+<a *ngIf="reportReady" href="{{this.pdfAddress}}" download>
+  Pobierz PDF</a>
+
+<!--<a href="file:///home/universe.dart.spb/apapliouka/IdeaProjects/petProjects/Estypendia/adminReport60549" download>-->
+
+<!--file///home/universe.dart.spb/apapliouka/IdeaProjects/petProjects/Estypendia/adminReport51610-->

@@ -21,11 +21,9 @@ export class AutomaticStudentReportComponent implements OnInit {
       this.studentReport = studentTypeController;
       if (this.studentReport.length === 0) {
         this.empty = true;
-        console.log(this.studentReport.length);
       } else {
         this.empty = false;
       }
-      console.log(this.studentReport);
 
     });
   }

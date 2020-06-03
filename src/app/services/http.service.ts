@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable, throwError} from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AdminReport} from '../interfaces/adminReport';
 import {StudentReport} from '../interfaces/studentReport';
 import {Student} from '../interfaces/student';
@@ -9,6 +9,8 @@ import {environment} from '../../environments/environment';
 import {catchError} from 'rxjs/operators';
 import {StudentType} from '../interfaces/student-type';
 import {AddressType} from '../interfaces/address-type';
+import {User} from '../interfaces/user';
+import {Pdflink} from '../interfaces/pdflink';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,12 @@ export class HttpService {
   public getReport(): Observable<Array<AdminReport>> {
     return this.httpClient.get<Array<AdminReport>>(environment.adminReportURL, {withCredentials: true});
   }
+  public getPDFAdminReport(): Observable<Pdflink> {
+    return this.httpClient.get<Pdflink>(environment.adminReportPDFURL, {withCredentials: true});
+  }
+  public getAllUsers(): Observable<Array<User>> {
+    return this.httpClient.get<Array<User>>(environment.allUsersURL, {withCredentials: true});
+  }
   public getUserInfo(): Observable<any> {
     return this.httpClient.get<any>(environment.userInfoURL, {withCredentials: true});
   }
@@ -30,6 +38,10 @@ export class HttpService {
 
   public getStudentReport(studentId: number): Observable<Array<StudentReport>> {
     return this.httpClient.get<Array<StudentReport>>(environment.studentReportURL + studentId, {withCredentials: true});
+  }
+
+  public getPDFStudentReport(studentId: number): Observable<Pdflink> {
+    return this.httpClient.get<Pdflink>(environment.studentReportPDFURL + '/' + studentId, {withCredentials: true});
   }
   public getAutomaticStudentReport(): Observable<Array<StudentReport>> {
     return this.httpClient.get<Array<StudentReport>>(environment.studentReportURL, {withCredentials: true});

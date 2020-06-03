@@ -47,3 +47,10 @@
     <td>{{record.paymentDate}}</td>
   </tr>
 </table>
+
+
+<button *ngIf="!empty" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+        (click)="(getPDFStudentReport())">Wygeneruj pdf
+</button>
+<a *ngIf="pdfReady" href="{{this.pdfAddress}}" download>
+  Pobierz PDF</a>

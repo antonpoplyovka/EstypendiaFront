@@ -13,6 +13,8 @@ export class StudentReportComponent implements OnInit {
   empty = true;
   showAlert = false;
   studentReport: StudentReport[];
+  pdfAddress: string;
+  pdfReady = false;
 
   constructor(private httpService: HttpService) {
   }
@@ -31,13 +33,17 @@ export class StudentReportComponent implements OnInit {
       if (this.studentReport.length === 0) {
         this.empty = true;
         this.showAlert = true;
-        console.log(this.studentReport.length);
       } else {
         this.empty = false;
         this.showAlert = false;
       }
-      console.log(this.studentReport);
 
+    });
+  }
+  getPDFStudentReport() {
+    this.httpService.getPDFStudentReport(this.studentId).subscribe(pdflink => {
+      this.pdfAddress = pdflink.link;
+      this.pdfReady = true;
     });
   }
 

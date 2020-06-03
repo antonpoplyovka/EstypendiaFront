@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AdminReport} from '../interfaces/adminReport';
 import {StudentReport} from '../interfaces/studentReport';
 import {Student} from '../interfaces/student';
@@ -16,8 +16,11 @@ export class AdminReportComponent implements OnInit {
   studentReport: StudentReport[];
   studentsReport: Student[];
   addressReport: Address[];
+  reportReady = false;
+  pdfAddress: string;
 
-  constructor(private httpPosts: HttpService) { }
+  constructor(private httpPosts: HttpService) {
+  }
 
   ngOnInit(): void {
     this.getReport();
@@ -27,12 +30,18 @@ export class AdminReportComponent implements OnInit {
   getReport() {
     this.httpPosts.getReport().subscribe(adminReportDTORecords => {
       this.report = adminReportDTORecords;
-      console.log(this.report);
     });
 
   }
 
+  getPdfReport() {
+    this.httpPosts.getPDFAdminReport().subscribe(adminReportPdf => {
+      this.pdfAddress = adminReportPdf.link;
+      this.reportReady = true;
 
+      // window.open(this.pdfAddress, '_blank');
+    });
+  }
 
 
 }

@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.userAuthenticated);
     this.isUserAuth();
 
   }
@@ -33,20 +32,15 @@ export class AppComponent implements OnInit {
 
   isAdmin() {
     this.httpService.isAdmin().subscribe(isAdmin => {
-      console.log(isAdmin);
       if (isAdmin) {
-        console.log('ADMIIIIIN');
         this.adminUser = true;
       }
       else {
-        console.log('JustUser');
       }
 
     });
   }
   userUi(){
-    console.log(this.userAuthenticated);
-    console.log(this.adminUser);
 
     return this.userAuthenticated && !this.adminUser;
   }
@@ -54,7 +48,6 @@ export class AppComponent implements OnInit {
   isUserAuth() {
     this.httpService.getUserInfo().subscribe(userInfo => {
 
-      console.log(userInfo);
       if (userInfo) {
         this.isAdmin();
         this.userAuthenticated = true;
@@ -62,7 +55,6 @@ export class AppComponent implements OnInit {
       if (!this.userAuthenticated) {
         window.location.href = 'http://localhost:8081/login';
       }
-      console.log(this.userAuthenticated);
     });
     this.isAdmin();
 

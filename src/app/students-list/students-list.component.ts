@@ -44,14 +44,12 @@ export class StudentsListComponent implements OnInit {
   getStudentsReport() {
     this.httpService.getStudentsList().subscribe(studentController => {
       this.studentsList = studentController;
-      console.log(this.studentsList);
     });
   }
 
   getStudentTypeList() {
     this.httpService.getStudentTypes().subscribe(data => {
       this.studentTypeList = data;
-      console.log(data);
     });
   }
 
@@ -59,7 +57,6 @@ export class StudentsListComponent implements OnInit {
 
     this.httpService.getAddressType().subscribe(data => {
       this.addressTypeList = data;
-      console.log(data);
     });
   }
 
@@ -67,7 +64,6 @@ export class StudentsListComponent implements OnInit {
 
     this.httpService.getAllAddresses().subscribe(data => {
       this.allAddresses = data;
-      console.log(data);
     });
   }
 
@@ -122,7 +118,6 @@ export class StudentsListComponent implements OnInit {
   }
 
   printStudent() {
-    console.log(this.student);
   }
 
   clearAllAndRefreshData() {

@@ -30,7 +30,6 @@ export class ChildComponent implements OnInit {
   getReport() {
     this.httpPosts.getReport().subscribe(adminReportDTORecords => {
       this.report = adminReportDTORecords;
-      console.log(this.report);
     });
 
   }
@@ -40,14 +39,12 @@ export class ChildComponent implements OnInit {
   getStudentsReport() {
     this.httpPosts.getStudentsList().subscribe(studentController => {
       this.studentsReport = studentController;
-      console.log(this.studentsReport);
     });
   }
 
   getAddressReport() {
     this.httpPosts.getAllAddresses().subscribe(addressController => {
       this.addressReport = addressController;
-      console.log(this.addressReport);
     });
   }
 

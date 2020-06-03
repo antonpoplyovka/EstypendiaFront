@@ -6,12 +6,15 @@ export const environment = {
   productionURL: false,
   studentURL: 'http://localhost:8081/api/v1/students/',
   adminReportURL: 'http://localhost:8081/api/v1/report/admin/',
+  adminReportPDFURL: 'http://localhost:8081/api/v1/report/admin/pdf',
   studentReportURL: 'http://localhost:8081/api/v1/report/student/',
+  studentReportPDFURL: 'http://localhost:8081/api/v1/report/student/pdf',
   addressURL: 'http://localhost:8081/api/v1/address/',
   studentTypeURL: 'http://localhost:8081/api/v1/typeOfStudent/',
   addressTypeURL: 'http://localhost:8081/api/v1/typeOfHousing/',
   userInfoURL: 'http://localhost:8081/userInfo',
-  isAdminURL: 'http://localhost:8081/isAdmin'
+  isAdminURL: 'http://localhost:8081/isAdmin',
+  allUsersURL: 'http://localhost:8081/allUsers'
 
 };
 

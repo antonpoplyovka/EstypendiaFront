@@ -51,14 +51,12 @@ export class StudentTypeComponent implements OnInit {
   getStudentTypes() {
     this.httpService.getStudentTypes().subscribe(studentTypeController => {
       this.studentTypeList = studentTypeController;
-      console.log(this.studentTypeList);
     });
   }
 
   getStudentTypeList() {
     this.httpService.getStudentTypes().subscribe(data => {
       this.studentTypeList = data;
-      console.log(data);
     });
   }
   prepareEditStudentType(studentType: StudentType){
@@ -76,7 +74,6 @@ export class StudentTypeComponent implements OnInit {
   }
 
   printStudentType() {
-    console.log(this.studentType);
   }
 
   clearAllAndRefreshData() {

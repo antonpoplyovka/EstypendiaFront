@@ -5,6 +5,7 @@ import { StudentTypeComponent } from './student-type/student-type.component';
 import { StudentsListComponent } from './students-list/students-list.component';
 import {AdminReportComponent} from './admin-report/admin-report.component';
 import {StudentReportComponent} from './student-report/student-report.component';
+import {GoogleUsersComponent} from './google-users/google-users.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'admin-report', component: AdminReportComponent},
   {path: 'student-report', component: StudentReportComponent},
   {path: 'address-list', component: AddressListComponent},
+  {path: 'google-users', component: GoogleUsersComponent}
 ];
 
 @NgModule({

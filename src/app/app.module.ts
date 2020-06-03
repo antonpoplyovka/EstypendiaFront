@@ -14,6 +14,7 @@ import { AdminReportComponent } from './admin-report/admin-report.component';
 import { StudentReportComponent } from './student-report/student-report.component';
 // import { TypeOfHousingComponent } from './type-of-housing/type-of-housing.component';
 import { AutomaticStudentReportComponent } from './automatic-student-report/automatic-student-report.component';
+import { GoogleUsersComponent } from './google-users/google-users.component';
 
 
 
@@ -28,6 +29,7 @@ import { AutomaticStudentReportComponent } from './automatic-student-report/auto
     StudentReportComponent,
     // TypeOfHousingComponent,
     AutomaticStudentReportComponent,
+    GoogleUsersComponent,
 
   ],
     imports: [
