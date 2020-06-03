@@ -1,0 +1,21 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Roles</th>
+    <th>Last visit</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tr *ngFor="let record of googleUsersList">
+    <th>{{record.id}}</th>
+    <td>{{record.name}}</td>
+    <td>{{record.email}}</td>
+    <td>{{record.roles}}</td>
+    <td>{{record.lastVisit}}</td>
+  </tr>
+</table>
+
+
