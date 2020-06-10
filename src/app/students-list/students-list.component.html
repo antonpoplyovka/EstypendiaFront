@@ -60,14 +60,7 @@
             </div>
             <!--            =====================================================================================-->
             <div class="row">
-              <div class="col-sm">
-                <div class="form-group">
-                  <label for="countryOfBirthInputField">Kraj urodzenia</label>
-                  <input type="text" class="form-control" id="countryOfBirthInputField" name="countryOfBirthInputField"
-                         placeholder="Kraj urodzenia" [(ngModel)]="student.countryOfBirth">
-                  <!--            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-                </div>
-              </div>
+
               <div class="col-sm">
                 <div class="form-group">
                   <label for="nationalityInputField">Obywatelstwo</label>
@@ -106,19 +99,44 @@
             </div>
             <!--            =====================================================================================-->
             <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <select class="selectpicker" data-live-search="true" id="addressOfResidenceSelect"
+                          [(ngModel)]="student.countryOfBirth"
+                          name="countryOfBirthSelect">
+                    <option selected="selected" [ngValue]="0">Kraj urodzenia</option>
+                    <option *ngFor="let record of countryList" [ngValue]="record.name"
+
+                            name="addressOfResidenceOption">{{record.name}}
+                    </option>
+                  </select>
+
+                  <!--                  <input type="text" class="form-control" id="countryOfBirthInputField" name="countryOfBirthInputField"-->
+                  <!--                         placeholder="Kraj urodzenia" [(ngModel)]="student.countryOfBirth">-->
+                  <!--                  -->
+
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
 
 
               <div class="col-sm">
                 <div class="form-group">
-                  <select class="selectpicker" data-live-search="true" >
-                     <option selected="selected" [ngValue]="0">Adres zameldowania</option>
-                      <option *ngFor="let record of allAddresses" [ngValue]="record.id"
-                              name="addressOfResidenceOption">{{record.country}}/
+                  <select class="selectpicker" data-live-search="true" id="actualAddressSelect"
+                          [(ngModel)]="student.actualAddress"
+                          (change)="printStudent()" name="actualAddressSelect">
+                    <option selected="selected" [attr.value]="0">Adres zameldowania</option>
+                    <option *ngFor="let record of allAddresses" [attr.value]="record.id"
+                            name="addressOfResidenceOption">{{record.country}}/
 
-                        {{record.city}}/{{record.code}}
-                        /{{record.street}} {{record.houseNumber}} {{record.flatNumber}}</option>
+                      {{record.city}}/{{record.code}}
+                      /{{record.street}} {{record.houseNumber}} {{record.flatNumber}}</option>
 
-                   </select>
+                  </select>
                 </div>
               </div>
 
@@ -127,9 +145,11 @@
             <div class="row">
               <div class="col-sm">
                 <div class="form-group">
-                  <select class="selectpicker" data-live-search="true" >
-                    <option selected="selected" [ngValue]="0">Adres zamieszkania</option>
-                    <option *ngFor="let record of allAddresses" [ngValue]="record.id"
+                  <select class="selectpicker" data-live-search="true" id="studentTypeSelect"
+                          [(ngModel)]="student.typeOfStudent"
+                          (change)="printStudent()" name="studentTypeSelect">
+                    <option selected="selected" [attr.value]="0">Adres zamieszkania</option>
+                    <option *ngFor="let record of allAddresses" [attr.value]="record.id"
                             name="actualAddressOption">{{record.country}}/
                       {{record.city}}/{{record.code}}
                       /{{record.street}} {{record.houseNumber}} {{record.flatNumber}}</option>
@@ -146,9 +166,11 @@
 
 
                 <div class="form-group">
-                  <select class="selectpicker" data-live-search="true" >
-                    <option selected="selected" [ngValue]="0">Typ studenta</option>
-                    <option *ngFor="let record of studentTypeList" [ngValue]="record.id"
+                  <select class="selectpicker" data-live-search="true" id="addressTypeSelect"
+                          [(ngModel)]="student.addressType"
+                          (change)="printStudent()" name="addressTypeSelect">
+                    <option selected="selected" [attr.value]="0">Typ studenta</option>
+                    <option *ngFor="let record of studentTypeList" [attr.value]="record.id"
                             name="studentTypeOption">{{record.description}}</option>
                   </select>
                 </div>
@@ -159,9 +181,9 @@
             <div class="row">
               <div class="col-sm">
                 <div class="form-group">
-                  <select class="selectpicker" data-live-search="true" >
-                    <option selected="selected" [ngValue]="0">Typ Zamieszkania</option>
-                    <option *ngFor="let record of addressTypeList" [ngValue]="record.id"
+                  <select class="selectpicker" data-live-search="true" [(ngModel)]="student.addressType">
+                    <option selected="selected" [attr.value]="0">Typ Zamieszkania</option>
+                    <option *ngFor="let record of addressTypeList" [attr.value]="record.id"
                             name="addressTypeOption">{{record.description}}</option>
                   </select>
                 </div>
@@ -182,24 +204,64 @@
       </div>
       <div class="modal-footer">
 
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
-        <button type="button" class="btn btn-primary" *ngIf="studentEntityReadyToSend() && !this.edit" (click)="addNewStudent()" data-dismiss="modal">Dodaj studenta
+        <button type="button" class="btn btn-secondary" (click)="printStudent()" data-dismiss="modal">Zamknij</button>
+        <button type="button" class="btn btn-primary" *ngIf="studentEntityReadyToSend() && !this.edit"
+                (click)="addNewStudent()" data-dismiss="modal">Dodaj studenta
         </button>
         <button type="button" class="btn btn-primary" *ngIf="!studentEntityReadyToSend() && !this.edit"
                 disabled>Dodaj studenta
         </button>
-<!--        EDIT Buttons =============================-->
-        <button type="button" class="btn btn-primary" *ngIf="this.edit && studentEntityReadyToSend()" (click)="editStudent()" data-dismiss="modal">Zapisz
+        <!--        EDIT Buttons =============================-->
+        <button type="button" class="btn btn-primary" *ngIf="this.edit && studentEntityReadyToSend()"
+                (click)="editStudent()" data-dismiss="modal">Zapisz
         </button>
         <button type="button" class="btn btn-primary" *ngIf="this.edit && !studentEntityReadyToSend()"
                 disabled>Zapisz
         </button>
-<!--        EDIT Buttons =============================-->
+        <!--        EDIT Buttons =============================-->
 
       </div>
     </div>
   </div>
 </div>
+<!--<table class="table table-striped">-->
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>Id</th>-->
+<!--    <th>Imie</th>-->
+<!--    <th>Nazwisko</th>-->
+<!--    <th>Imię ojca</th>-->
+<!--    <th>Miejsce urodzenia</th>-->
+<!--    <th>Kraj urodzenia</th>-->
+<!--    <th>Obywatelstwo</th>-->
+<!--    <th>Email</th>-->
+
+<!--    <th></th>-->
+
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tr *ngFor="let record of studentsList">-->
+<!--    <th>{{record.id}}</th>-->
+<!--    <td>{{record.name}}</td>-->
+<!--    <td>{{record.surname}}</td>-->
+<!--    <td>{{record.fatherName}}</td>-->
+<!--    <td>{{record.placeOfBirth}}</td>-->
+<!--    <td>{{record.countryOfBirth}}</td>-->
+<!--    <td>{{record.nationality}}</td>-->
+<!--    <td>{{record.email}}</td>-->
+
+<!--    <td>-->
+<!--      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"-->
+<!--              (click)="prepareEditStudent(record)"> Edytuj-->
+<!--      </button>-->
+<!--    </td>-->
+
+<!--  </tr>-->
+<!--</table>-->
+
+
+<input class="form-control" type="text" id="myInput" [(ngModel)]="searchText" (change)="searchStudent()"
+       placeholder="Search for names..">
 <table class="table table-striped">
   <thead>
   <tr>
@@ -216,7 +278,7 @@
 
   </tr>
   </thead>
-  <tr *ngFor="let record of studentsList">
+  <tr *ngFor="let record of showingStudentList">
     <th>{{record.id}}</th>
     <td>{{record.name}}</td>
     <td>{{record.surname}}</td>
@@ -227,7 +289,8 @@
     <td>{{record.email}}</td>
 
     <td>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="prepareEditStudent(record)"> Edytuj
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+              (click)="prepareEditStudent(record)"> Edytuj
       </button>
     </td>
 

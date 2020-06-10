@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ChildComponent } from './child/child.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentsListComponent } from './students-list/students-list.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddressListComponent } from './address/address-list.component';
 import { StudentTypeComponent } from './student-type/student-type.component';
@@ -37,7 +37,8 @@ import { GoogleUsersComponent } from './google-users/google-users.component';
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
-        NgbModule
+        NgbModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

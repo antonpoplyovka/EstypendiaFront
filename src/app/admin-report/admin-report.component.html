@@ -1,3 +1,5 @@
+<input class="form-control" type="text" id="myInput" [(ngModel)]="searchText" (change)="searchRecord()"
+       placeholder="Search for names..">
 <table class="table table-striped">
   <thead>
   <tr>
@@ -7,7 +9,7 @@
 
   </tr>
   </thead>
-  <tr *ngFor="let record of report">
+  <tr *ngFor="let record of showingReport">
     <td>{{record.name}}</td>
     <td>{{record.surname}}</td>
     <td>{{record.monthlyPayment}}</td>
