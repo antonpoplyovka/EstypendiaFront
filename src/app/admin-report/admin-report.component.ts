@@ -11,8 +11,9 @@ import {HttpService} from '../services/http.service';
   styleUrls: ['./admin-report.component.css']
 })
 export class AdminReportComponent implements OnInit {
-
+  searchText: string;
   report: AdminReport[];
+  showingReport: AdminReport[] = [];
   studentReport: StudentReport[];
   studentsReport: Student[];
   addressReport: Address[];
@@ -30,6 +31,7 @@ export class AdminReportComponent implements OnInit {
   getReport() {
     this.httpPosts.getReport().subscribe(adminReportDTORecords => {
       this.report = adminReportDTORecords;
+      this.showingReport = this.report;
     });
 
   }
@@ -41,6 +43,21 @@ export class AdminReportComponent implements OnInit {
 
       // window.open(this.pdfAddress, '_blank');
     });
+  }
+  searchRecord() {
+    if (this.searchText.length.valueOf() !== 0) {
+      this.showingReport = [];
+      this.report.map(record => {
+        if (record.name.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1
+          || record.surname.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1
+          || record.monthlyPayment.toString().indexOf(this.searchText.toLowerCase()) !== -1)
+          {
+          this.showingReport.push(record);
+        }
+      });
+    } else {
+      this.showingReport = this.report;
+    }
   }
 
 

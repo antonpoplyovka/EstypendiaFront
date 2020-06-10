@@ -14,7 +14,10 @@ export const environment = {
   addressTypeURL: 'http://localhost:8081/api/v1/typeOfHousing/',
   userInfoURL: 'http://localhost:8081/userInfo',
   isAdminURL: 'http://localhost:8081/isAdmin',
-  allUsersURL: 'http://localhost:8081/allUsers'
+  allUsersURL: 'http://localhost:8081/allUsers',
+  countryURL: 'https://restcountries.eu/rest/v2/all',
+  allStudentReportURL: 'http://localhost:8081/api/v1/report/student/all'
+
 
 };
 

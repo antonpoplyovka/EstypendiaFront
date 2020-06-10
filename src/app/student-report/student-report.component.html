@@ -18,6 +18,19 @@
       </div>
       <div class="col">
         <div class="form-group">
+          <select  data-live-search="true"
+                  [(ngModel)]="studentId" name="addressOfResidenceSelect">
+            <option selected="selected" [ngValue]="0">Student</option>
+            <option *ngFor="let record of studentsList" [ngValue]="record.id"
+                    name="somename">{{record.name}}/{{record.surname}}/{{record.fatherName}}
+              /{{record.placeOfBirth}}/{{record.countryOfBirth}}/{{record.nationality}}/{{record.email}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
                   *ngIf="this.studentIdReady()" (click)="getStudentReport()">Wygeneruj raport
           </button>
@@ -27,12 +40,37 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+                (click)="getAllStudentReport()">Raport dla wszystkich studentów
+        </button>
+      </div>
+      </div>
   </div>
 </form>
 
 <div class="alert alert-primary" role="alert" *ngIf="showAlert">
   Nie znaleziono danych dla podanego numeru studenta
 </div>
+
+<table class="table table-striped" *ngIf="showAllStudentReport">
+  <thead>
+  <tr>
+    <th>Imię</th>
+    <th>Nazwisko</th>
+    <th>Kwota</th>
+    <th>Data wypłaty</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let record of allStudentReport">
+    <td>{{record.name}}</td>
+    <td>{{record.surname}}</td>
+    <td>{{record.paymentAmount}}</td>
+    <td>{{record.paymentDate}}</td>
+  </tr>
+</table>
+
 
 
 <table class="table table-striped" *ngIf="!empty">

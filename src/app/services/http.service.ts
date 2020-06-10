@@ -11,6 +11,8 @@ import {StudentType} from '../interfaces/student-type';
 import {AddressType} from '../interfaces/address-type';
 import {User} from '../interfaces/user';
 import {Pdflink} from '../interfaces/pdflink';
+import {Country} from '../interfaces/country';
+import {AllStudentReport} from '../interfaces/all-student-report';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +25,14 @@ export class HttpService {
   public getReport(): Observable<Array<AdminReport>> {
     return this.httpClient.get<Array<AdminReport>>(environment.adminReportURL, {withCredentials: true});
   }
+  public getCountries(): Observable<Array<Country>> {
+    return this.httpClient.get<Array<Country>>(environment.countryURL);
+  }
   public getPDFAdminReport(): Observable<Pdflink> {
     return this.httpClient.get<Pdflink>(environment.adminReportPDFURL, {withCredentials: true});
+  }
+  public getAllStudentReport(): Observable<Array<AllStudentReport>> {
+    return this.httpClient.get<Array<AllStudentReport>>(environment.allStudentReportURL, {withCredentials: true});
   }
   public getAllUsers(): Observable<Array<User>> {
     return this.httpClient.get<Array<User>>(environment.allUsersURL, {withCredentials: true});

@@ -12,7 +12,8 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./address-list.component.css']
 })
 export class AddressListComponent implements OnInit {
-
+  searchText = '';
+  showingAddressList: Address[] = [];
   addressList: Address[];
   studentList: Student[];
   edit = false;
@@ -52,6 +53,7 @@ export class AddressListComponent implements OnInit {
   getStudentTypeList(){
     this.httpService.getStudentTypes().subscribe(data => {
       this.studentTypeList = data;
+      this.showingAddressList = this.addressList;
     });
   }
   prepareEditAddress(address: Address){
@@ -78,7 +80,26 @@ export class AddressListComponent implements OnInit {
     this.address.houseNumber = '';
     this.address.flatNumber = '';
   }
-
+  searchAddress() {
+    if (this.searchText.length.valueOf() !== 0) {
+      this.showingAddressList = [];
+      this.addressList.map(address => {
+        if (address.code.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1
+          || address.street.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1
+          || address.district.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1
+          || address.voivodeship.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1
+          || address.city.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1
+          || address.country.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1
+          || address.houseNumber.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1
+          || address.phone.toLowerCase().indexOf(this.searchText.toLowerCase()) !== -1
+        ) {
+          this.showingAddressList.push(address);
+        }
+      });
+    } else {
+      this.showingAddressList = this.addressList;
+    }
+  }
   printAddress(){
   }
 }
