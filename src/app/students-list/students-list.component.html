@@ -110,7 +110,8 @@
 
               <div class="col-sm">
                 <div class="form-group">
-                  <select class="selectpicker" data-live-search="true" >
+                   <select class="selectpicker" data-live-search="true"  id="addressOfResidenceSelect" [(ngModel)]="student.addressOfResidence"
+                    (change)="printStudent()" name="addressOfResidenceSelect">
                      <option selected="selected" [ngValue]="0">Adres zameldowania</option>
                       <option *ngFor="let record of allAddresses" [ngValue]="record.id"
                               name="addressOfResidenceOption">{{record.country}}/
