@@ -18,7 +18,7 @@
       </div>
       <div class="col">
         <div class="form-group">
-          <select  data-live-search="true"
+          <select  class="selectpicker" data-live-search="true"
                   [(ngModel)]="studentId" name="addressOfResidenceSelect">
             <option selected="selected" [ngValue]="0">Student</option>
             <option *ngFor="let record of studentsList" [ngValue]="record.id"
